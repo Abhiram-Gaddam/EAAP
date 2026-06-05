@@ -283,39 +283,7 @@ export default function HomeClient() {
       </section>
 
       {/* 2. STATS & INFO SECTION */}
-      {/* <section className="relative z-30 bg-[#FAFAFA] px-8 md:px-24 py-24 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-          <div className="md:w-1/2">
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] leading-tight text-slate-900"
-            >
-              Setting the gold standard in <span className="text-[#0096a4] italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif]">clinical embryology</span> and ART across Andhra Pradesh.
-            </motion.p>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-8 text-lg text-slate-500 font-light max-w-md"
-            >
-              {ASSOCIATION_INFO.actReference}. We are the authoritative voice and regulatory representative for reproductive medicine professionals.
-            </motion.p>
-          </div>
-          
-           
-             <ParallaxItem  
-             src="/images/Lab_Stock.png"
-             alt="Spa relaxation"
-             className="aspect-[5/5] w-full rounded-sm"
-             speed={1} ></ParallaxItem> 
-            
-          
-        </div>
-      </section> */}
+     
       <section className="relative z-30 bg-[#FAFAFA] px-8 md:px-16 lg:px-24 py-32 border-b border-slate-200 overflow-hidden">
         {/* Subtle Background Accent */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0096a4]/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/3 translate-x-1/3" />
@@ -393,85 +361,14 @@ export default function HomeClient() {
       </section>
 
       {/* 3. LATEST NEWS & ANNOUNCEMENTS */}
-      {/* <section className="relative py-24 px-8 md:px-24 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <span className="text-[#0096a4] text-xs font-bold uppercase tracking-widest mb-2 block">Updates & Events</span>
-              <h2 className="text-4xl md:text-5xl font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d]">
-                Latest <span className="italic text-slate-400">Announcements</span>
-              </h2>
-            </div>
-            <a href="/events" className="hidden md:flex items-center gap-2 text-sm font-semibold text-[#1a365d] hover:text-[#0096a4] transition-colors">
-              View All News <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {LATEST_NEWS.map((news) => (
-              <div key={news.id} className="group flex flex-col bg-[#FAFAFA] border border-slate-200 rounded-2xl p-8 hover:shadow-xl hover:border-[#0096a4]/20 transition-all duration-500">
-                <div className="flex justify-between items-center mb-6">
-                  <span className="bg-white border border-slate-200 text-[#1a365d] text-xs font-semibold px-3 py-1 rounded-full">
-                    {news.category}
-                  </span>
-                  <div className="flex items-center gap-2 text-slate-400 text-xs font-medium">
-                    <Calendar className="w-4 h-4" /> {news.date}
-                  </div>
-                </div>
-                <h3 className="text-xl font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] mb-4 group-hover:text-[#0096a4] transition-colors leading-snug">
-                  {news.title}
-                </h3>
-                <p className="text-slate-500 font-light text-sm leading-relaxed flex-grow mb-6">
-                  {news.excerpt}
-                </p>
-                <a href={`/events/${news.id}`} className="flex items-center gap-2 text-[#0096a4] text-sm font-semibold mt-auto w-fit border-b border-transparent group-hover:border-[#0096a4] transition-all">
-                  Read Article <ChevronRight className="w-4 h-4" />
-                </a>
-              </div>
-            ))}
-          </div>
-          
-           <a href="/events" className="mt-8 flex md:hidden items-center justify-center gap-2 text-sm font-semibold text-[#1a365d] hover:text-[#0096a4] transition-colors border border-slate-200 rounded-full py-3">
-            View All News <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
-      </section> */}
+     
       <LatestAnnouncements/>
   
       {/* 4. BOARD SECTION */}
      <LeadershipSection />
 
       {/* 5. FINAL MEMBERSHIP CTA */}
-      {/* <section className="relative py-32 px-8 md:px-24 bg-[#1a365d] overflow-hidden">
-         <div className="absolute top-0 right-0 w-96 h-96 bg-[#0096a4]/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0096a4]/10 rounded-full blur-[100px] pointer-events-none" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-          <ShieldCheck className="w-16 h-16 text-[#0096a4] mb-8" />
-          <h2 className="text-4xl md:text-6xl font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-white leading-tight mb-6">
-            Ready to advance your <span className="italic text-[#0096a4]">practice?</span>
-          </h2>
-          <p className="text-lg text-slate-300 font-light mb-12 max-w-2xl">
-            Join the elite network of clinical embryologists in Andhra Pradesh. Gain access to exclusive CMEs, regulatory support, and a community dedicated to excellence in ART.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6">
-            <a 
-              href="/membership" 
-              className="group relative flex items-center justify-center gap-3 bg-[#0096a4] text-white px-10 py-5 rounded-full text-lg font-medium hover:bg-white hover:text-[#1a365d] transition-all duration-300 shadow-xl"
-            >
-              Start Membership Application
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a 
-              href="/contact" 
-              className="flex items-center justify-center gap-2 text-white font-medium hover:text-[#0096a4] transition-colors duration-300 py-4 px-8 rounded-full border border-white/20 hover:border-[#0096a4]/50 hover:bg-white/5"
-            >
-              Contact Secretariat
-            </a>
-          </div>
-        </div>
-      </section> */}
+       
       <FinalCTASection/>
     </main>
   );

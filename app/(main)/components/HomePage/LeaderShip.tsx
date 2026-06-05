@@ -101,7 +101,7 @@ export default function LeadershipSection() {
                                 src={member.image}
                                 alt={member.name}
                                 fill
-                                className="object-cover" 
+                                 className="object-cover" 
                                 priority={member.sNo === 1}
                             />
                         </motion.div>
