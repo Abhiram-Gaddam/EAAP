@@ -36,7 +36,7 @@ export default function MembershipCheckoutButton({ user }: { user: any }) {
       
       const orderData = await response.json();
       console.log(response);
-      
+
       if (!response.ok) {
         throw new Error(orderData.error || 'Failed to initialize payment');
       }
@@ -46,7 +46,7 @@ export default function MembershipCheckoutButton({ user }: { user: any }) {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Safe to expose
         amount: orderData.amount, 
         currency: orderData.currency,
-        name: 'Global Academy', 
+        name: 'EAAP', 
         description: 'Lifetime Membership Fee',
         order_id: orderData.orderId, // The secure ID from your backend
         

@@ -10,10 +10,12 @@ const razorpay = new Razorpay({
 
 export async function POST(request: Request) {
   const user = await verifyUser();
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+}
 
   try {
-    const MEMBERSHIP_AMOUNT_INR = 1500;
+    const MEMBERSHIP_AMOUNT_INR = 1;
     const amountInPaise = MEMBERSHIP_AMOUNT_INR * 100;
 
     // Hardcoded brief receipt format to guarantee length remains well below 40 characters
