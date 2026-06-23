@@ -52,12 +52,28 @@ export default function MembershipCheckoutButton({ user }: { user: any }) {
         
         // 4. Handle the frontend success callback
         handler: async function (razorpayResponse: any) {
-          console.log("Frontend Success:", razorpayResponse);
-          alert('Payment Successful! Awaiting admin approval.');
+            try {
+              const verifyRes = await fetch('/api/admin/membership/verify-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  razorpay_order_id: razorpayResponse.razorpay_order_id,
+                  razorpay_payment_id: razorpayResponse.razorpay_payment_id,
+                  razorpay_signature: razorpayResponse.razorpay_signature,
+                }),
+              });
           
-          // Optional: Refresh the page or redirect to a success screen
-          // window.location.reload();
-        },
+              const result = await verifyRes.json();
+          
+              if (!verifyRes.ok) throw new Error(result.error);
+          
+              alert('Payment verified! Awaiting admin approval.');
+              // window.location.reload(); // or redirect
+            } catch (err: any) {
+              alert('Payment done but verification failed. Please contact support.');
+              console.error(err);
+            }
+          },
         prefill: {
           name: user?.fullName || '',
           email: user?.email || '',
