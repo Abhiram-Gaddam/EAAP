@@ -61,20 +61,22 @@ export default function MembershipPage() {
     email: "john.doe@example.com"
   };
   return (
-    // <main className="flex min-h-screen flex-col w-full bg-white">
-    //   {/* 1. Hero & Value Proposition */}
-    //   <MembershipHero />
-    //   <MembershipBenefits/>
-    //   {/* 2. Eligibility & Membership Categories (To be added) */}
-    //   <EligibilityGuidelines />
+    <main className="flex min-h-screen flex-col w-full bg-white">
+      {/* 1. Hero & Value Proposition */}
+      <MembershipHero />
+      <MembershipBenefits/>
+      {/* 2. Eligibility & Membership Categories (To be added) */}
+      <EligibilityGuidelines />
       
-    //   {/* 3. Fee Structure & Registration Process (To be added) */}
-    //   <MembershipRegistrationProcess />
+      {/* 3. Fee Structure & Registration Process (To be added) */}
+      <MembershipRegistrationProcess />
       
-    //   {/* 4. Document Checklist & Cancellation Policies (To be added) */}
-    //   <TermsAndDocuments />
-    // </main>
+      {/* 4. Document Checklist & Cancellation Policies (To be added) */}
+      <TermsAndDocuments />
+
+      <MembershipCheckoutButton user={currentUser} ></MembershipCheckoutButton>
+
+    </main>
     
-    <MembershipCheckoutButton user={currentUser} ></MembershipCheckoutButton>
   );
 }
