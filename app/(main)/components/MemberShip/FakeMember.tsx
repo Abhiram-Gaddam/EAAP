@@ -35,7 +35,8 @@ export default function MembershipCheckoutButton({ user }: { user: any }) {
       });
       
       const orderData = await response.json();
-
+      console.log(response);
+      
       if (!response.ok) {
         throw new Error(orderData.error || 'Failed to initialize payment');
       }
