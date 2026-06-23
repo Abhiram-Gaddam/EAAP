@@ -1,8 +1,11 @@
 import { Metadata } from "next";
+
 import MembershipHero from "../components/MemberShip/MemberShipHero";  
 import EligibilityGuidelines from "../components/MemberShip/EligibilityGuidelines";
 import MembershipRegistrationProcess from "../components/MemberShip/MemberReg";
 import TermsAndDocuments from "../components/MemberShip/TermDocument";
+import MembershipBenefits from "../components/MemberShip/WhyEaap";
+import MembershipCheckoutButton from "../components/MemberShip/FakeMember";
 export const metadata: Metadata = {
   title: "Membership | Embryologists Association of Andhra Pradesh (EAAP)",
   description: "Join the Embryologists Association of Andhra Pradesh (EAAP). Elevate your clinical embryology practice with professional networking, continuous education, and regulatory support.",
@@ -53,19 +56,25 @@ export const metadata: Metadata = {
 };
 
 export default function MembershipPage() {
+  const currentUser = {
+    fullName: "John Doe",
+    email: "john.doe@example.com"
+  };
   return (
-    <main className="flex min-h-screen flex-col w-full bg-white">
-      {/* 1. Hero & Value Proposition */}
-      <MembershipHero />
+    // <main className="flex min-h-screen flex-col w-full bg-white">
+    //   {/* 1. Hero & Value Proposition */}
+    //   <MembershipHero />
+    //   <MembershipBenefits/>
+    //   {/* 2. Eligibility & Membership Categories (To be added) */}
+    //   <EligibilityGuidelines />
       
-      {/* 2. Eligibility & Membership Categories (To be added) */}
-      <EligibilityGuidelines />
+    //   {/* 3. Fee Structure & Registration Process (To be added) */}
+    //   <MembershipRegistrationProcess />
       
-      {/* 3. Fee Structure & Registration Process (To be added) */}
-      <MembershipRegistrationProcess />
-      
-      {/* 4. Document Checklist & Cancellation Policies (To be added) */}
-      <TermsAndDocuments />
-    </main>
+    //   {/* 4. Document Checklist & Cancellation Policies (To be added) */}
+    //   <TermsAndDocuments />
+    // </main>
+    
+    <MembershipCheckoutButton user={currentUser} ></MembershipCheckoutButton>
   );
 }

@@ -1,193 +1,159 @@
+// app/contact/page.tsx
 "use client";
 
-import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Send, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, MapPin, Phone, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import { submitInquiry } from '@/app/lib/utilities/userApis';
 
-// Contact US
-export default function ContactUs() {
+export default function ContactPage() {
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    
+    try {
+      setIsSubmitting(true);
+      await submitInquiry(formData);
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (err: any) {
+      setError(err.message || 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-[#FAFAFA] pt-32 pb-24 px-4 md:px-16 lg:px-24 relative overflow-hidden">
-      
-      {/* Background Decor */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#0096a4]/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-[#1a365d]/5 rounded-full blur-[120px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <div className="w-full min-h-screen bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16 md:mb-24"
-        >
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-[1px] w-8 bg-[#0096a4]" />
-            <span className="text-[#0096a4] text-xs font-bold uppercase tracking-widest">
-              Get In Touch
+        <div className="flex flex-col justify-center space-y-10">
+          <div>
+            <span className="px-3 py-1.5 rounded-lg bg-[#0096a4]/10 text-[#0096a4] text-xs font-medium uppercase tracking-widest mb-4 inline-block">
+              Contact Us
             </span>
-            <div className="h-[1px] w-8 bg-[#0096a4]" />
+            <h1 className="text-4xl sm:text-5xl font-medium text-[#1a365d] leading-tight tracking-tight mb-4">
+              How can we help you today?
+            </h1>
+            <p className="text-base font-normal text-slate-500 max-w-md leading-relaxed">
+              Whether you have a question about an upcoming event, membership details, or publication guidelines, our team is ready to answer your questions.
+            </p>
           </div>
-          <h1 className="font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-5xl md:text-6xl text-[#1a365d] leading-[1.1] mb-6">
-            Contact <span className="italic text-[#0096a4]">EAAP.</span>
-          </h1>
-          <p className="text-slate-500 font-light text-lg leading-relaxed">
-            Reach out to the Embryologists Association of Andhra Pradesh for membership inquiries, regulatory guidance, or general support.
-          </p>
-        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          
-          {/* Left Column: Contact Information */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h3 className="font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-3xl text-[#1a365d] mb-8">
-                Official Information
-              </h3>
-
-              <div className="flex flex-col gap-8">
-                {/* Address (From PDF) */}
-                <div className="flex items-start gap-5 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-[#1a365d] group-hover:border-[#1a365d] transition-all duration-300">
-                    <MapPin className="w-5 h-5 text-[#1a365d] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-[#1a365d] font-medium mb-2">Registered Office</h4>
-                    <p className="text-slate-500 font-light text-base leading-relaxed">
-                      Door No.3-161/53-509, Nidamanuru<br />
-                      Vijayawada Rural, N.T.R. District<br />
-                      Andhra Pradesh, India
-                    </p>
-                  </div>
-                </div>
-
-                {/* Email Placeholder */}
-                <div className="flex items-start gap-5 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-[#0096a4] group-hover:border-[#0096a4] transition-all duration-300">
-                    <Mail className="w-5 h-5 text-[#0096a4] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-[#1a365d] font-medium mb-2">Email Address</h4>
-                    <p className="text-slate-500 font-light text-base leading-relaxed">
-                      info@eaap.in
-                    </p>
-                  </div>
-                </div>
-
-                {/* Phone Placeholder */}
-                <div className="flex items-start gap-5 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-[#1a365d] group-hover:border-[#1a365d] transition-all duration-300">
-                    <Phone className="w-5 h-5 text-[#1a365d] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-[#1a365d] font-medium mb-2">Phone Number</h4>
-                    <p className="text-slate-500 font-light text-base leading-relaxed">
-                      +91 98765 43210
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Working Hours */}
-                <div className="flex items-start gap-5 group">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-[#0096a4] group-hover:border-[#0096a4] transition-all duration-300">
-                    <Clock className="w-5 h-5 text-[#0096a4] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h4 className="text-[#1a365d] font-medium mb-2">Working Hours</h4>
-                    <p className="text-slate-500 font-light text-base leading-relaxed">
-                      Monday - Friday: 9:00 AM - 5:00 PM<br />
-                      Closed on Public Holidays
-                    </p>
-                  </div>
-                </div>
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-[#0096a4] shadow-sm shrink-0">
+                <Mail className="w-5 h-5 stroke-[1.5]" />
               </div>
-            </motion.div>
+              <div>
+                <p className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1">Email</p>
+                <a href="mailto:support@eaap.in" className="text-base font-medium text-slate-800 hover:text-[#0096a4] transition-colors">support@eaap.in</a>
+              </div>
+            </div>
+            
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-[#0096a4] shadow-sm shrink-0">
+                <Phone className="w-5 h-5 stroke-[1.5]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1">Phone</p>
+                <a href="tel:+919876543210" className="text-base font-medium text-slate-800 hover:text-[#0096a4] transition-colors">+91 98765 43210</a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-[#0096a4] shadow-sm shrink-0">
+                <MapPin className="w-5 h-5 stroke-[1.5]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1">Office</p>
+                <p className="text-base font-medium text-slate-800">123 Innovation Drive<br/>Tech Park, AP 522001</p>
+              </div>
+            </div>
           </div>
-
-          {/* Right Column: Contact Form */}
-          <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white/80 backdrop-blur-xl border border-slate-200 rounded-[2.5rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
-            >
-              <h3 className="font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-2xl text-[#1a365d] mb-8">
-                Send us a Message
-              </h3>
-
-              <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="firstName" className="text-xs uppercase tracking-wider font-semibold text-slate-500">First Name</label>
-                    <input 
-                      type="text" 
-                      id="firstName"
-                      className="w-full bg-slate-50 border border-slate-200 px-4 py-4 rounded-xl focus:outline-none focus:border-[#0096a4] focus:ring-1 focus:ring-[#0096a4] transition-all duration-300 text-slate-700"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="lastName" className="text-xs uppercase tracking-wider font-semibold text-slate-500">Last Name</label>
-                    <input 
-                      type="text" 
-                      id="lastName"
-                      className="w-full bg-slate-50 border border-slate-200 px-4 py-4 rounded-xl focus:outline-none focus:border-[#0096a4] focus:ring-1 focus:ring-[#0096a4] transition-all duration-300 text-slate-700"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold text-slate-500">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email"
-                    className="w-full bg-slate-50 border border-slate-200 px-4 py-4 rounded-xl focus:outline-none focus:border-[#0096a4] focus:ring-1 focus:ring-[#0096a4] transition-all duration-300 text-slate-700"
-                    placeholder="john.doe@example.com"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="subject" className="text-xs uppercase tracking-wider font-semibold text-slate-500">Subject</label>
-                  <input 
-                    type="text" 
-                    id="subject"
-                    className="w-full bg-slate-50 border border-slate-200 px-4  py-4 rounded-xl focus:outline-none focus:border-[#0096a4] focus:ring-1 focus:ring-[#0096a4] transition-all duration-300 text-slate-700"
-                    placeholder="Membership Inquiry"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold text-slate-500">Message</label>
-                  <textarea 
-                    id="message"
-                    rows={5}
-                    className="w-full bg-slate-50 border border-slate-200 px-5 py-4 rounded-xl focus:outline-none focus:border-[#0096a4] focus:ring-1 focus:ring-[#0096a4] transition-all duration-300 text-slate-700 resize-none"
-                    placeholder="How can we help you?"
-                  ></textarea>
-                </div>
-
-                <button 
-                  type="submit"
-                  className="w-full bg-[#1a365d] text-white px-6 py-4 rounded-xl font-medium tracking-wide hover:bg-[#0b1b35] transition-colors duration-300 flex items-center justify-center gap-3 group mt-2"
-                >
-                  Send Message
-                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-              </form>
-
-            </motion.div>
-          </div>
-
         </div>
+
+        <div className="bg-white p-8 sm:p-10 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] relative overflow-hidden">
+          <AnimatePresence>
+            {isSuccess && (
+              <motion.div 
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-white/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-8"
+              >
+                <div className="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-6">
+                  <CheckCircle2 className="w-10 h-10 stroke-[1.5]" />
+                </div>
+                <h3 className="text-2xl font-medium text-slate-800 mb-2">Message Sent</h3>
+                <p className="text-sm font-normal text-slate-500">Thank you for reaching out. We have received your inquiry and will get back to you shortly.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <div className="p-4 rounded-xl bg-red-50 text-red-600 text-sm font-medium border border-red-100">
+                {error}
+              </div>
+            )}
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-2">Your Name</label>
+                <input 
+                  type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-[#0096a4]/20 focus:border-[#0096a4] outline-none transition-all"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <label className="block text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-2">Email Address</label>
+                <input 
+                  type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-[#0096a4]/20 focus:border-[#0096a4] outline-none transition-all"
+                  placeholder="john@example.com"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-2">Subject</label>
+              <input 
+                type="text" required value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-[#0096a4]/20 focus:border-[#0096a4] outline-none transition-all"
+                placeholder="How can we help?"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-2">Message</label>
+              <textarea 
+                required rows={5} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})}
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-[#0096a4]/20 focus:border-[#0096a4] outline-none transition-all resize-none"
+                placeholder="Type your message here..."
+              />
+            </div>
+
+            <button 
+              type="submit" disabled={isSubmitting}
+              className="w-full py-4 bg-[#1a365d] hover:bg-[#12284b] text-white rounded-xl text-base font-medium transition-all shadow-md disabled:opacity-50 flex items-center justify-center gap-2 group"
+            >
+              {isSubmitting ? (
+                <Loader2 className="w-5 h-5 animate-spin stroke-[1.5]" />
+              ) : (
+                <Send className="w-4 h-4 stroke-[1.5] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              )}
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
+        </div>
+
       </div>
-    </main>
+    </div>
   );
 }

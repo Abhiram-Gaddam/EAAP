@@ -12,12 +12,11 @@ const QUICK_LINKS = [
     { name: "Publications & Research", href: "/publications" },
     { name: "Contact Secretariat", href: "/contact" },
 ];
-
 const LEGAL_LINKS = [
-    { name: "Terms & Conditions", href: "/terms" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Cancellation Policy", href: "/membership#cancellation" },
-    { name: "Eligibility Guidelines", href: "/membership#eligibility" },
+    { name: "Terms & Conditions", href: "/legal#membership" },
+    { name: "Privacy Policy", href: "/legal#privacy" },
+    { name: "Cancellation Policy", href: "/legal#cancellation" },
+    { name: "Eligibility Guidelines", href: "/legal#mandate" },
 ];
 
 export default function Footer() {
