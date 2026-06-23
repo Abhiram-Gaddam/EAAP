@@ -38,7 +38,7 @@ export async function POST(request: Request) {
       .insert([{
         userId: user.userId,
         amount: MEMBERSHIP_AMOUNT_INR,
-        transactionType: 'MEMBERSHIP_FEE',
+        transactionType: 'ADMISSION',
         paymentGatewayId: order.id, // Storing the rzp_order_id
         status: 'PENDING',
         date: new Date().toISOString()
