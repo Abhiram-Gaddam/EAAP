@@ -39,7 +39,10 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     const updatePayload: any = {};
     if (name) updatePayload.name = name;
     if (placeholders) updatePayload.placeholders = placeholders;
-
+    const validTypes = ['text', 'qr', 'photo'];
+    if (placeholders && !placeholders.every((p: any) => validTypes.includes(p.type))) {
+      return NextResponse.json({ error: 'Invalid placeholder type' }, { status: 400 });
+    }
     const { data, error } = await supabase
       .from('CertificateTemplates')
       .update(updatePayload)

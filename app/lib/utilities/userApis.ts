@@ -215,3 +215,69 @@ export async function deleteInquiry(id: string): Promise<any> {
   if (!response.ok) throw new Error('Failed to delete inquiry');
   return response.json();
 }
+// app/lib/utilities/apis.ts (Add this export)
+export async function getPublicEvents(category?: string): Promise<any> {
+  const response = await fetch('/api/public/events', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || 'Failed to fetch public events');
+  }
+  
+  return response.json();
+}
+
+// app/lib/utilities/apis.ts
+
+export async function getPublicEventDetails(id: string): Promise<any> {
+  const response = await fetch(`/api/public/events/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || 'Failed to fetch public event details');
+  }
+  return response.json();
+}
+
+// app/lib/utilities/apis.ts
+
+export async function getPublicPublications(): Promise<any> {
+  const response = await fetch('/api/public/publications', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || 'Failed to fetch public publications');
+  }
+  return response.json();
+}
+
+export async function getPublicPublicationDetails(id: string): Promise<any> {
+  const response = await fetch(`/api/public/publications/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || 'Failed to fetch public publication details');
+  }
+  return response.json();
+}
+
+export async function getMembershipCertificate(userId: string): Promise<any> {
+  const response = await fetch(`/api/user/membership/${userId}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || 'Failed to fetch membership certificate');
+  }
+  return response.json();
+}

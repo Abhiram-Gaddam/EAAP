@@ -87,15 +87,15 @@ export default function TermsAndDocuments() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-slate-600">
                 <div className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-2 shrink-0" />
-                <span>Any member of the Society may resign his membership by notifying the Secretary in writing[cite: 1].</span>
+                <span>Any member of the Society may resign his membership by notifying the Secretary in writing.</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-600">
                 <div className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-2 shrink-0" />
-                <span>If the annual subscription is not paid within three months from the date of commencement of the financial year, such member shall forfeit the membership[cite: 1].</span>
+                <span>If the annual subscription is not paid within three months from the date of commencement of the financial year, such member shall forfeit the membership.</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-600">
                 <div className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-2 shrink-0" />
-                <span>Membership is forfeited for those who fail to attend three consecutive meetings of the managing committee, or those who are expelled by the committee for conduct detrimental to the society[cite: 1].</span>
+                <span>Membership is forfeited for those who fail to attend three consecutive meetings of the managing committee, or those who are expelled by the committee for conduct detrimental to the society.</span>
               </li>
             </ul>
           </motion.div>

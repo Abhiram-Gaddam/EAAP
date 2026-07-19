@@ -122,7 +122,7 @@ export default function AdminSidebar({ closeMobileMenu }: { closeMobileMenu?: ()
         <div className="pt-6 pb-2">
           <div className="h-px bg-slate-100 w-full" />
         </div>
-
+{/* 
         <Link
           href="/admin/settings"
           onClick={closeMobileMenu}
@@ -141,7 +141,7 @@ export default function AdminSidebar({ closeMobileMenu }: { closeMobileMenu?: ()
               <div className="absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-[#1a365d] rotate-45" />
             </div>
           )}
-        </Link>
+        </Link> */}
       </nav>
 
       {/* User / Logout Area */}

@@ -1,16 +1,19 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, CreditCard, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Award, ArrowRight, Ticket } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const ESSENTIAL_GUIDELINES = [
-  "Membership is maintained through an annual subscription, payable at the start of each financial year.",
+  "Membership requires a single, one-time admission fee for lifetime access, with zero recurring annual charges.",
   "Members are expected to uphold the highest standards of clinical integrity and professional conduct.",
   "Detailed statutory policies, forfeiture terms, and eligibility criteria are available in our official legal directory."
 ];
 
 export default function FeeStructureAndGuidelines() {
+  const router = useRouter();
+
   return (
     <section id="fee-structure-section" className="bg-[#FAFAFA] py-24 md:py-32 px-6 md:px-16 lg:px-24 border-b border-slate-200 relative overflow-hidden">
       
@@ -21,7 +24,7 @@ export default function FeeStructureAndGuidelines() {
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
         
-        {/* Left Column: Standard Membership Card */}
+        {/* Left Column: Lifetime Membership Card */}
         <div className="lg:w-5/12 flex flex-col">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -32,7 +35,7 @@ export default function FeeStructureAndGuidelines() {
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="h-[1px] w-8 bg-[#0096a4]" />
-              <span className="text-[#0096a4] text-xs font-bold uppercase tracking-widest">
+              <span className="text-[#0096a4] text-xs font-medium uppercase tracking-widest">
                 Subscriptions & Fees
               </span>
             </div>
@@ -46,57 +49,58 @@ export default function FeeStructureAndGuidelines() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative p-8 md:p-10 rounded-[2rem] bg-[#1a365d] border border-[#1a365d] text-white shadow-2xl shadow-[#1a365d]/20 overflow-hidden"
+            className="relative p-8 md:p-10 rounded-[2rem] bg-[#1a365d] border border-[#1a365d] text-white shadow-2xl shadow-[#1a365d]/20 overflow-hidden flex flex-col"
           >
             {/* Decorative Gradient */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#0096a4]/20 to-transparent rounded-bl-full pointer-events-none" />
 
             <div className="flex justify-between items-start mb-8 relative z-10">
               <div>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-white/10 backdrop-blur-sm">
-                  <CreditCard className="w-6 h-6 text-[#0096a4]" strokeWidth={1.5} />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-white/10 backdrop-blur-sm border border-white/10">
+                  <Award className="w-6 h-6 text-[#0096a4] stroke-[1.5]" />
                 </div>
                 <h3 className="font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-3xl mb-2">
-                  Standard Membership
+                  Lifetime Membership
                 </h3>
-                <p className="text-sm text-white/70">
-                  The official membership for clinical embryologists in Andhra Pradesh.
+                <p className="text-sm font-normal text-white/70">
+                  The official, one-time membership for clinical embryologists in Andhra Pradesh.
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mb-8 relative z-10">
-              <div>
-                <p className="text-xs uppercase tracking-widest font-bold mb-1 text-[#0096a4]">
-                  Admission Fee
-                </p>
-                <p className="text-3xl font-semibold">₹1,500</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest font-bold mb-1 text-[#0096a4]">
-                  Annual Subscription
-                </p>
-                <p className="text-3xl font-semibold">
-                  ₹1,500 <span className="text-sm font-normal opacity-70">/ year</span>
-                </p>
+            <div className="mb-8 relative z-10">
+              <p className="text-[10px] uppercase tracking-widest font-medium mb-2 text-[#0096a4]">
+                One-Time Admission Fee
+              </p>
+              <div className="flex items-baseline gap-2">
+                <p className="text-4xl font-medium tracking-tight">₹1,500</p>
+                <span className="text-sm font-normal text-white/60">/ lifetime</span>
               </div>
             </div>
 
-            <div className="space-y-4 relative z-10 pt-6 border-t border-white/10">
+            <div className="space-y-4 relative z-10 pt-6 border-t border-white/10 mb-8">
               {[
                 'Voting rights at General Body meetings',
                 'Access to all EAAP scientific programs',
-                'Participation in CMEs, workshops, and conferences',
+                'Priority registration for CMEs & workshops',
                 'Unified representation in regulatory matters'
               ].map((feature, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-[#0096a4]" />
-                  <span className="text-sm text-white/90">
+                  <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-[#0096a4] stroke-[1.5]" />
+                  <span className="text-sm font-normal text-white/90">
                     {feature}
                   </span>
                 </div>
               ))}
             </div>
+
+            <button 
+              onClick={() => router.push('/user/membership')}
+              className="relative z-10 w-full mt-auto py-4 bg-[#0096a4] hover:bg-[#007a86] text-white rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 group"
+            >
+              <Ticket className="w-4 h-4 stroke-[1.5] group-hover:scale-110 transition-transform" />
+              Apply & Pay Now
+            </button>
           </motion.div>
         </div>
 
@@ -117,7 +121,7 @@ export default function FeeStructureAndGuidelines() {
                 <h3 className="font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-2xl text-[#1a365d]">
                   Membership Essentials
                 </h3>
-                <p className="text-slate-500 text-sm mt-1">
+                <p className="text-slate-500 text-sm font-normal mt-1">
                   Core expectations for EAAP members
                 </p>
               </div>
@@ -134,7 +138,7 @@ export default function FeeStructureAndGuidelines() {
                   className="flex items-start gap-4"
                 >
                   <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[#0096a4] shrink-0" />
-                  <span className="text-slate-600 leading-relaxed font-light text-base">
+                  <span className="text-slate-600 leading-relaxed font-normal text-base">
                     {guideline}
                   </span>
                 </motion.li>
@@ -152,7 +156,7 @@ export default function FeeStructureAndGuidelines() {
                 className="inline-flex items-center gap-2 text-[#1a365d] hover:text-[#0096a4] font-medium text-sm transition-colors duration-300 group"
               >
                 Read full eligibility & legal terms
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 stroke-[1.5] group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </motion.div>
 

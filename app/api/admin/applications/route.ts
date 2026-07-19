@@ -13,6 +13,7 @@ export async function GET() {
   const { data, error } = await supabase
     .from('MembershipDetails')
     .select('id, status, userId, highestQualification ,createdAt,User(id, fullName, email)')
+    .in('status', ['APPROVED', 'PENDING_APPROVAL', 'ACTIVE','REJECTED'])
     .order('createdAt', { ascending: false });
 
   if (error) {

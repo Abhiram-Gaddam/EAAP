@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { UserPlus, FileText, Clock, CreditCard, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
-
+import { useRouter } from 'next/navigation';
+import { getCurrentUser } from '@/app/lib/utilities/apis';  
 const REGISTRATION_STEPS = [
   {
     id: 1,
@@ -19,21 +20,35 @@ const REGISTRATION_STEPS = [
   },
   {
     id: 3,
-    icon: Clock,
-    title: 'Committee Review',
-    description: 'The Executive Committee will review your application to ensure it meets the statutory eligibility criteria.'
+    icon: CreditCard,
+    title: 'Fee Payment',
+    description: 'Upon Submitting, you will be prompted to pay the Admission Fee and Annual Subscription to activate your membership.'
   },
   {
     id: 4,
-    icon: CreditCard,
-    title: 'Fee Payment',
-    description: 'Upon approval, you will be prompted to pay the Admission Fee and Annual Subscription to activate your membership.'
-  }
+    icon: Clock,
+    title: 'Committee Review',
+    description: 'After Successfull Payment, The Executive Committee will review your application to ensure it meets the statutory eligibility criteria.'
+   }
 ];
 
 export default function MembershipRegistrationProcess() {
+  const router = useRouter();
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  useEffect(() => {
+    const verifyAuth = async () => {
+      try {
+        await getCurrentUser();
+        setIsAuthenticated(true);
+      } catch (error) {
+        setIsAuthenticated(false);
+      } finally {
+        setIsCheckingAuth(false);
+      }
+    };
+    verifyAuth();
+  }, []);
   return (
     <section id="registration-section" className="bg-white py-24 px-6 md:px-16 lg:px-24 border-b border-slate-100 relative overflow-hidden">
       
@@ -157,7 +172,7 @@ export default function MembershipRegistrationProcess() {
 
                     <div className="flex flex-col gap-4 mt-auto">
                       <button 
-                        onClick={() => setIsAuthenticated(true)}
+                        onClick={()=>{router.push('/login')} }
                         className="w-full bg-[#1a365d] text-white px-6 py-3.5 md:py-4 rounded-xl font-medium text-sm md:text-base tracking-wide hover:bg-[#0b1b35] transition-colors duration-300 flex items-center justify-center gap-2 group shadow-sm hover:shadow-lg shadow-[#1a365d]/20"
                       >
                         Create Account / Log In
@@ -188,18 +203,19 @@ export default function MembershipRegistrationProcess() {
 
                     <div className="flex flex-col gap-4 mt-auto">
                       <button 
+                      onClick={()=>{router.push('/user/membership')} }
                         className="w-full bg-[#0096a4] text-white px-6 py-3.5 md:py-4 rounded-xl font-medium text-sm md:text-base tracking-wide hover:bg-[#007a86] transition-colors duration-300 flex items-center justify-center gap-2 group shadow-sm hover:shadow-lg shadow-[#0096a4]/20"
                       >
-                        Start Application Form
+                        Become a Member
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </button>
                       
-                      <button 
+                      {/* <button 
                         onClick={() => setIsAuthenticated(false)}
                         className="text-slate-400 hover:text-[#1a365d] text-sm font-medium transition-colors duration-300 mt-2"
                       >
                         Sign Out
-                      </button>
+                      </button> */}
                     </div>
                   </motion.div>
                 )}

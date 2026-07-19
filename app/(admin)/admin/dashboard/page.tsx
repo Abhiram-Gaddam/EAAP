@@ -1,7 +1,242 @@
-// app/admin/page.tsx
+// // app/admin/page.tsx
+// "use client";
+
+// import { motion } from 'framer-motion';
+// import Link from 'next/link';
+// import { 
+//   Users, 
+//   FileText, 
+//   CalendarDays, 
+//   IndianRupee, 
+//   ArrowRight, 
+//   Clock, 
+//   CheckCircle2, 
+//   XCircle,
+//   MoreHorizontal,
+//   ExternalLink,
+//   Settings
+// } from 'lucide-react';
+
+// const STATS = [
+//   { label: 'Active Members', value: '1,248', trend: '+12 this month', icon: Users, iconColor: 'text-blue-600', iconBg: 'bg-blue-100' },
+//   { label: 'Pending Reviews', value: '24', trend: 'Requires attention', icon: FileText, iconColor: 'text-amber-600', iconBg: 'bg-amber-100' },
+//   { label: 'Upcoming Events', value: '3', trend: 'Next: Jun 28', icon: CalendarDays, iconColor: 'text-emerald-600', iconBg: 'bg-emerald-100' },
+//   { label: 'Monthly Revenue', value: '₹42,500', trend: '+8% vs last month', icon: IndianRupee, iconColor: 'text-[#0096a4]', iconBg: 'bg-[#0096a4]/10' },
+// ];
+
+// const RECENT_APPLICATIONS = [
+//   { id: 'APP-802', name: 'Dr. Sarah Reddy', qualification: 'M.Sc Clinical Embryology', date: '2 hours ago', status: 'Pending' },
+//   { id: 'APP-801', name: 'Dr. Vikram Kumar', qualification: 'Ph.D Reproductive Med.', date: '5 hours ago', status: 'Pending' },
+//   { id: 'APP-800', name: 'Dr. Ananya Rao', qualification: 'B.Sc Clinical Embryology', date: '1 day ago', status: 'Approved' },
+//   { id: 'APP-799', name: 'Dr. Rajesh Sharma', qualification: 'MD (OBG)', date: '2 days ago', status: 'Rejected' },
+// ];
+
+// const UPCOMING_EVENTS = [
+//   { id: 1, title: 'Annual ART Conference 2026', date: 'June 28, 2026', type: 'Conference', attendees: 142 },
+//   { id: 2, title: 'Advanced ICSI Workshop', date: 'July 15, 2026', type: 'Workshop', attendees: 30 },
+//   { id: 3, title: 'Q3 Board Meeting', date: 'August 02, 2026', type: 'Internal', attendees: 12 },
+// ];
+
+// export default function AdminOverview() {
+//   return (
+//     <div className="space-y-8 px-4 bg-white py-8">
+      
+//       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+//         <motion.div 
+//           initial={{ opacity: 0, y: -10 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.4 }}
+//         >
+//           <h1 className="text-2xl font-semibold text-[#1a365d] tracking-tight">Dashboard Overview</h1>
+//           <p className="text-sm text-slate-500 font-medium mt-1">Monitor association metrics and recent application activity.</p>
+//         </motion.div>
+        
+//         <motion.div 
+//           initial={{ opacity: 0, scale: 0.95 }}
+//           animate={{ opacity: 1, scale: 1 }}
+//           transition={{ duration: 0.4, delay: 0.1 }}
+//           className="flex items-center gap-4"
+//         >
+//           <button className="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+//             Download Report
+//           </button>
+//           <Link href="/admin/applications" className="px-5 py-2.5 bg-[#1a365d] text-white rounded-xl text-sm font-semibold hover:bg-[#0f213b] hover:shadow-md hover:shadow-[#1a365d]/20 transition-all">
+//             Review Queue
+//           </Link>
+//         </motion.div>
+//       </div>
+
+//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+//         {STATS.map((stat, idx) => {
+//           const Icon = stat.icon;
+//           return (
+//             <motion.div
+//               key={stat.label}
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.4, delay: idx * 0.05 }}
+//               className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-shadow"
+//             >
+//               <div className="flex items-center justify-between mb-6">
+//                 <p className="text-sm font-semibold text-slate-500">{stat.label}</p>
+//                 <div className={`w-10 h-10 rounded-xl ${stat.iconBg} ${stat.iconColor} flex items-center justify-center`}>
+//                   <Icon className="w-5 h-5" strokeWidth={2} />
+//                 </div>
+//               </div>
+//               <div>
+//                 <h3 className="text-3xl font-semibold text-[#1a365d] tracking-tight">{stat.value}</h3>
+//                 <p className="text-xs text-slate-400 mt-2 font-medium bg-slate-50 inline-block px-2 py-1 rounded-md">{stat.trend}</p>
+//               </div>
+//             </motion.div>
+//           );
+//         })}
+//       </div>
+
+//       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+//         <motion.div 
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.4, delay: 0.2 }}
+//           className="lg:col-span-2 space-y-6"
+//         >
+//           <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+            
+//             <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-white">
+//               <div>
+//                 <h2 className="text-lg font-semibold text-[#1a365d]">Recent Applications</h2>
+//                 <p className="text-sm text-slate-500 font-medium mt-1">Awaiting board verification</p>
+//               </div>
+//               <Link href="/admin/applications" className="text-sm font-semibold text-[#0096a4] hover:text-[#1a365d] flex items-center gap-1.5 transition-colors bg-[#0096a4]/5 px-3 py-1.5 rounded-lg hover:bg-slate-50">
+//                 View all <ArrowRight className="w-4 h-4" />
+//               </Link>
+//             </div>
+
+//             <div className="overflow-x-auto">
+//               <table className="w-full text-left border-collapse">
+//                 <thead>
+//                   <tr className="bg-slate-50/80 border-b border-slate-100">
+//                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Applicant</th>
+//                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Qualification</th>
+//                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Submitted</th>
+//                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+//                     <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Action</th>
+//                   </tr>
+//                 </thead>
+//                 <tbody className="divide-y divide-slate-100 bg-white">
+//                   {RECENT_APPLICATIONS.map((app) => (
+//                     <tr key={app.id} className="hover:bg-slate-50/50 transition-colors group">
+//                       <td className="px-6 py-4">
+//                         <div className="flex items-center gap-3">
+//                           <div className="w-10 h-10 rounded-full bg-[#1a365d]/5 flex items-center justify-center text-[#1a365d] font-bold text-sm border border-[#1a365d]/10">
+//                             {app.name.split(' ')[1]?.[0] || app.name[0]}
+//                           </div>
+//                           <div>
+//                             <div className="text-sm font-semibold text-[#1a365d]">{app.name}</div>
+//                             <div className="text-xs text-slate-400 font-medium mt-0.5">{app.id}</div>
+//                           </div>
+//                         </div>
+//                       </td>
+//                       <td className="px-6 py-4 text-sm text-slate-600 font-medium">{app.qualification}</td>
+//                       <td className="px-6 py-4 text-sm text-slate-500 font-medium">{app.date}</td>
+//                       <td className="px-6 py-4">
+//                         <div className={`inline-flex items-center gap-2 px-2.5 py-1.5 rounded-lg border ${
+//                           app.status === 'Pending' ? 'bg-amber-50 border-amber-200/60 text-amber-700' : 
+//                           app.status === 'Approved' ? 'bg-emerald-50 border-emerald-200/60 text-emerald-700' : 
+//                           'bg-red-50 border-red-200/60 text-red-700'
+//                         }`}>
+//                           {app.status === 'Pending' && <Clock className="w-3.5 h-3.5" />}
+//                           {app.status === 'Approved' && <CheckCircle2 className="w-3.5 h-3.5" />}
+//                           {app.status === 'Rejected' && <XCircle className="w-3.5 h-3.5" />}
+//                           <span className="text-xs font-semibold">
+//                             {app.status}
+//                           </span>
+//                         </div>
+//                       </td>
+//                       <td className="px-6 py-4 text-right">
+//                         <Link href={`/admin/applications/${app.id}`} className="p-2 text-slate-400 hover:text-[#1a365d] hover:bg-slate-100 rounded-xl inline-flex transition-colors">
+//                           <MoreHorizontal className="w-5 h-5" />
+//                         </Link>
+//                       </td>
+//                     </tr>
+//                   ))}
+//                 </tbody>
+//               </table>
+//             </div>
+            
+//           </div>
+//         </motion.div>
+
+//         <motion.div 
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.4, delay: 0.3 }}
+//           className="space-y-6 lg:col-span-1"
+//         >
+//           <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+//             <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+//               <h2 className="text-lg font-semibold text-[#1a365d]">Event Schedule</h2>
+//               <Link href="/admin/events" className="p-2 text-slate-400 hover:text-[#0096a4] hover:bg-[#0096a4]/5 rounded-xl transition-colors">
+//                 <ArrowRight className="w-4 h-4" />
+//               </Link>
+//             </div>
+//             <div className="p-6 space-y-5">
+//               {UPCOMING_EVENTS.map((event) => (
+//                 <div key={event.id} className="flex gap-4 group cursor-pointer items-start">
+//                   <div className="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 shrink-0 group-hover:border-[#0096a4]/40 group-hover:bg-[#0096a4]/10 transition-all shadow-sm">
+//                     <span className="text-[10px] font-bold text-slate-500 uppercase leading-none mb-1.5 group-hover:text-[#0096a4]">Jun</span>
+//                     <span className="text-sm font-bold text-[#1a365d] leading-none group-hover:text-[#0096a4]">{event.date.split(' ')[1].replace(',', '')}</span>
+//                   </div>
+//                   <div className="flex-1 pt-0.5">
+//                     <h4 className="text-sm font-semibold text-[#1a365d] group-hover:text-[#0096a4] transition-colors line-clamp-1">{event.title}</h4>
+//                     <div className="flex items-center gap-2.5 mt-2">
+//                       <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">{event.type}</span>
+//                       <span className="text-[11px] text-slate-500 font-medium">{event.attendees} Registered</span>
+//                     </div>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+
+//           <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6">
+//             <h2 className="text-lg font-semibold text-[#1a365d] mb-1">Quick Links</h2>
+//             <p className="text-sm text-slate-500 font-medium mb-6">Access portals and configurations.</p>
+            
+//             <div className="space-y-3">
+//               <Link href="/" target="_blank" className="flex items-center gap-4 p-3 rounded-2xl border border-slate-100 hover:border-[#0096a4]/30 hover:bg-[#0096a4]/5 hover:shadow-md hover:shadow-[#0096a4]/5 transition-all group">
+//                 <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-[#0096a4] group-hover:border-[#0096a4]/30 group-hover:bg-white transition-colors shadow-sm">
+//                   <ExternalLink className="w-4 h-4" />
+//                 </div>
+//                 <div className="flex-1">
+//                   <span className="text-sm font-semibold text-slate-700 group-hover:text-[#1a365d] transition-colors">Public Site</span>
+//                 </div>
+//                 <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#0096a4] transition-colors mr-1" />
+//               </Link>
+              
+//               <Link href="/admin/settings" className="flex items-center gap-4 p-3 rounded-2xl border border-slate-100 hover:border-[#0096a4]/30 hover:bg-[#0096a4]/5 hover:shadow-md hover:shadow-[#0096a4]/5 transition-all group">
+//                 <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-[#0096a4] group-hover:border-[#0096a4]/30 group-hover:bg-white transition-colors shadow-sm">
+//                   <Settings className="w-4 h-4" />
+//                 </div>
+//                 <div className="flex-1">
+//                   <span className="text-sm font-semibold text-slate-700 group-hover:text-[#1a365d] transition-colors">System Settings</span>
+//                 </div>
+//                 <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#0096a4] transition-colors mr-1" />
+//               </Link>
+//             </div>
+//           </div>
+
+//         </motion.div>
+//       </div>
+      
+//     </div>
+//   );
+// }
+
 "use client";
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { 
   Users, 
@@ -14,53 +249,84 @@ import {
   XCircle,
   MoreHorizontal,
   ExternalLink,
-  Settings
+  Settings,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
-
-const STATS = [
-  { label: 'Active Members', value: '1,248', trend: '+12 this month', icon: Users, iconColor: 'text-blue-600', iconBg: 'bg-blue-100' },
-  { label: 'Pending Reviews', value: '24', trend: 'Requires attention', icon: FileText, iconColor: 'text-amber-600', iconBg: 'bg-amber-100' },
-  { label: 'Upcoming Events', value: '3', trend: 'Next: Jun 28', icon: CalendarDays, iconColor: 'text-emerald-600', iconBg: 'bg-emerald-100' },
-  { label: 'Monthly Revenue', value: '₹42,500', trend: '+8% vs last month', icon: IndianRupee, iconColor: 'text-[#0096a4]', iconBg: 'bg-[#0096a4]/10' },
-];
-
-const RECENT_APPLICATIONS = [
-  { id: 'APP-802', name: 'Dr. Sarah Reddy', qualification: 'M.Sc Clinical Embryology', date: '2 hours ago', status: 'Pending' },
-  { id: 'APP-801', name: 'Dr. Vikram Kumar', qualification: 'Ph.D Reproductive Med.', date: '5 hours ago', status: 'Pending' },
-  { id: 'APP-800', name: 'Dr. Ananya Rao', qualification: 'B.Sc Clinical Embryology', date: '1 day ago', status: 'Approved' },
-  { id: 'APP-799', name: 'Dr. Rajesh Sharma', qualification: 'MD (OBG)', date: '2 days ago', status: 'Rejected' },
-];
-
-const UPCOMING_EVENTS = [
-  { id: 1, title: 'Annual ART Conference 2026', date: 'June 28, 2026', type: 'Conference', attendees: 142 },
-  { id: 2, title: 'Advanced ICSI Workshop', date: 'July 15, 2026', type: 'Workshop', attendees: 30 },
-  { id: 3, title: 'Q3 Board Meeting', date: 'August 02, 2026', type: 'Internal', attendees: 12 },
-];
+import { getAdminDashboard } from '@/app/lib/utilities/apis';
 
 export default function AdminOverview() {
+  const [data, setData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
+
+  const fetchDashboard = async () => {
+    try {
+      setIsLoading(true);
+      const res = await getAdminDashboard();
+      setData(res);
+    } catch (err: any) {
+      setError(err.message || 'Failed to load dashboard data.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex flex-col items-center justify-center bg-white">
+        <Loader2 className="w-8 h-8 text-[#0096a4] animate-spin mb-4 stroke-[1.5]" />
+        <p className="text-slate-500 font-medium text-sm tracking-wide">Loading dashboard metrics...</p>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="w-full h-[80vh] flex flex-col items-center justify-center bg-white p-4">
+        <AlertCircle className="w-10 h-10 text-red-400 mb-4 stroke-[1.5]" />
+        <p className="text-slate-600 font-medium text-sm mb-4">{error || 'Failed to load data.'}</p>
+        <button onClick={fetchDashboard} className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition-colors">
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  const kpis = data.kpis || {};
+  const recentApplications = data.recentApplications || [];
+  const eventSchedule = data.eventSchedule || [];
+
+  const STATS = [
+    { label: 'Active Members', value: kpis.activeMembers || '0', trend: 'Total verified', icon: Users, iconColor: 'text-blue-600', iconBg: 'bg-blue-100' },
+    { label: 'Pending Reviews', value: kpis.pendingReviews || '0', trend: 'Requires attention', icon: FileText, iconColor: 'text-amber-600', iconBg: 'bg-amber-100' },
+    { label: 'Upcoming Events', value: kpis.upcomingEvents || '0', trend: 'Scheduled', icon: CalendarDays, iconColor: 'text-emerald-600', iconBg: 'bg-emerald-100' },
+    { label: 'Monthly Revenue', value: `₹${(kpis.totalRevenue || 0).toLocaleString()}`, trend: 'This month', icon: IndianRupee, iconColor: 'text-[#0096a4]', iconBg: 'bg-[#0096a4]/10' },
+  ];
+
   return (
-    <div className="space-y-8 px-4 bg-white py-8">
+    <div className="space-y-8 px-4 bg-white py-8 font-sans">
       
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <motion.div 
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
         >
-          <h1 className="text-2xl font-semibold text-[#1a365d] tracking-tight">Dashboard Overview</h1>
-          <p className="text-sm text-slate-500 font-medium mt-1">Monitor association metrics and recent application activity.</p>
+          <h1 className="text-2xl font-medium text-[#1a365d] tracking-tight">Dashboard Overview</h1>
+          <p className="text-sm text-slate-500 font-normal mt-1">Monitor association metrics and recent application activity.</p>
         </motion.div>
         
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4, delay: 0.1 }}
           className="flex items-center gap-4"
         >
-          <button className="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+          <button className="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
             Download Report
           </button>
-          <Link href="/admin/applications" className="px-5 py-2.5 bg-[#1a365d] text-white rounded-xl text-sm font-semibold hover:bg-[#0f213b] hover:shadow-md hover:shadow-[#1a365d]/20 transition-all">
+          <Link href="/admin/applications" className="px-5 py-2.5 bg-[#1a365d] text-white rounded-xl text-sm font-medium hover:bg-[#0f213b] hover:shadow-md hover:shadow-[#1a365d]/20 transition-all">
             Review Queue
           </Link>
         </motion.div>
@@ -72,20 +338,18 @@ export default function AdminOverview() {
           return (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-shadow"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: idx * 0.05 }}
+              className="bg-white p-6 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-shadow"
             >
               <div className="flex items-center justify-between mb-6">
-                <p className="text-sm font-semibold text-slate-500">{stat.label}</p>
+                <p className="text-sm font-medium text-slate-500">{stat.label}</p>
                 <div className={`w-10 h-10 rounded-xl ${stat.iconBg} ${stat.iconColor} flex items-center justify-center`}>
-                  <Icon className="w-5 h-5" strokeWidth={2} />
+                  <Icon className="w-5 h-5 stroke-[1.5]" />
                 </div>
               </div>
               <div>
-                <h3 className="text-3xl font-semibold text-[#1a365d] tracking-tight">{stat.value}</h3>
-                <p className="text-xs text-slate-400 mt-2 font-medium bg-slate-50 inline-block px-2 py-1 rounded-md">{stat.trend}</p>
+                <h3 className="text-3xl font-medium text-[#1a365d] tracking-tight">{stat.value}</h3>
+                <p className="text-[10px] text-slate-400 mt-2 font-medium bg-slate-50 inline-block px-2 py-1 rounded-md uppercase tracking-widest">{stat.trend}</p>
               </div>
             </motion.div>
           );
@@ -95,133 +359,151 @@ export default function AdminOverview() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}
           className="lg:col-span-2 space-y-6"
         >
-          <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+          <div className="bg-white border border-slate-100 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
             
-            <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-white">
+            <div className="p-6 md:p-8 border-b border-slate-100 flex items-center justify-between bg-white">
               <div>
-                <h2 className="text-lg font-semibold text-[#1a365d]">Recent Applications</h2>
-                <p className="text-sm text-slate-500 font-medium mt-1">Awaiting board verification</p>
+                <h2 className="text-lg font-medium text-[#1a365d]">Recent Applications</h2>
+                <p className="text-sm text-slate-500 font-normal mt-1">Awaiting board verification</p>
               </div>
-              <Link href="/admin/applications" className="text-sm font-semibold text-[#0096a4] hover:text-[#1a365d] flex items-center gap-1.5 transition-colors bg-[#0096a4]/5 px-3 py-1.5 rounded-lg hover:bg-slate-50">
-                View all <ArrowRight className="w-4 h-4" />
+              <Link href="/admin/applications" className="text-sm font-medium text-[#0096a4] hover:text-[#1a365d] flex items-center gap-1.5 transition-colors bg-[#0096a4]/5 px-4 py-2 rounded-xl hover:bg-slate-50">
+                View all <ArrowRight className="w-4 h-4 stroke-[1.5]" />
               </Link>
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-slate-50/80 border-b border-slate-100">
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Applicant</th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Qualification</th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Submitted</th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 bg-white">
-                  {RECENT_APPLICATIONS.map((app) => (
-                    <tr key={app.id} className="hover:bg-slate-50/50 transition-colors group">
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-[#1a365d]/5 flex items-center justify-center text-[#1a365d] font-bold text-sm border border-[#1a365d]/10">
-                            {app.name.split(' ')[1]?.[0] || app.name[0]}
-                          </div>
-                          <div>
-                            <div className="text-sm font-semibold text-[#1a365d]">{app.name}</div>
-                            <div className="text-xs text-slate-400 font-medium mt-0.5">{app.id}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-600 font-medium">{app.qualification}</td>
-                      <td className="px-6 py-4 text-sm text-slate-500 font-medium">{app.date}</td>
-                      <td className="px-6 py-4">
-                        <div className={`inline-flex items-center gap-2 px-2.5 py-1.5 rounded-lg border ${
-                          app.status === 'Pending' ? 'bg-amber-50 border-amber-200/60 text-amber-700' : 
-                          app.status === 'Approved' ? 'bg-emerald-50 border-emerald-200/60 text-emerald-700' : 
-                          'bg-red-50 border-red-200/60 text-red-700'
-                        }`}>
-                          {app.status === 'Pending' && <Clock className="w-3.5 h-3.5" />}
-                          {app.status === 'Approved' && <CheckCircle2 className="w-3.5 h-3.5" />}
-                          {app.status === 'Rejected' && <XCircle className="w-3.5 h-3.5" />}
-                          <span className="text-xs font-semibold">
-                            {app.status}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-right">
-                        <Link href={`/admin/applications/${app.id}`} className="p-2 text-slate-400 hover:text-[#1a365d] hover:bg-slate-100 rounded-xl inline-flex transition-colors">
-                          <MoreHorizontal className="w-5 h-5" />
-                        </Link>
-                      </td>
+              {recentApplications.length > 0 ? (
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50/80 border-b border-slate-100">
+                      <th className="px-6 py-5 text-[10px] font-medium text-slate-400 uppercase tracking-widest whitespace-nowrap">Applicant</th>
+                      <th className="px-6 py-5 text-[10px] font-medium text-slate-400 uppercase tracking-widest whitespace-nowrap">Qualification</th>
+                      <th className="px-6 py-5 text-[10px] font-medium text-slate-400 uppercase tracking-widest whitespace-nowrap">Submitted</th>
+                      <th className="px-6 py-5 text-[10px] font-medium text-slate-400 uppercase tracking-widest whitespace-nowrap">Status</th>
+                      <th className="px-6 py-5 text-[10px] font-medium text-slate-400 uppercase tracking-widest text-right whitespace-nowrap">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-slate-50 bg-white">
+                    {recentApplications.map((app: any) => {
+                      const initial = app.name ? app.name.split(' ')[1]?.[0] || app.name[0] : 'U';
+                      return (
+                        <tr key={app.id} className="hover:bg-slate-50/50 transition-colors group">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-full bg-[#1a365d]/5 flex items-center justify-center text-[#1a365d] font-medium text-sm border border-[#1a365d]/10 uppercase">
+                                {initial}
+                              </div>
+                              <div>
+                                <div className="text-sm font-medium text-[#1a365d]">{app.name || 'Unknown User'}</div>
+                                <div className="text-[11px] text-slate-400 font-normal mt-0.5">ID: {app.id.split('-')[0]}</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 text-sm text-slate-600 font-normal">{app.qualification || 'N/A'}</td>
+                          <td className="px-6 py-4 text-xs text-slate-500 font-normal">
+                            {new Date(app.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border ${
+                              app.status === 'PENDING_APPROVAL' ? 'bg-amber-50 border-amber-100 text-amber-700' : 
+                              app.status === 'APPROVED' ? 'bg-emerald-50 border-emerald-100 text-emerald-700' : 
+                              'bg-red-50 border-red-100 text-red-700'
+                            }`}>
+                              {app.status === 'PENDING_APPROVAL' && <Clock className="w-3.5 h-3.5 stroke-[1.5]" />}
+                              {app.status === 'APPROVED' && <CheckCircle2 className="w-3.5 h-3.5 stroke-[1.5]" />}
+                              {app.status === 'REJECTED' && <XCircle className="w-3.5 h-3.5 stroke-[1.5]" />}
+                              <span className="text-[10px] font-medium uppercase tracking-widest">
+                                {app.status}
+                              </span>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 text-right">
+                            <Link href={`/admin/applications/${app.id}`} className="p-2 text-slate-400 hover:text-[#1a365d] hover:bg-slate-100 rounded-xl inline-flex transition-colors">
+                              <MoreHorizontal className="w-5 h-5 stroke-[1.5]" />
+                            </Link>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              ) : (
+                <div className="p-8 text-center text-slate-500 font-medium text-sm">
+                  No recent applications found.
+                </div>
+              )}
             </div>
-            
           </div>
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}
           className="space-y-6 lg:col-span-1"
         >
-          <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+          {/* Event Schedule Card */}
+          <div className="bg-white border border-slate-100 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
             <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-[#1a365d]">Event Schedule</h2>
+              <h2 className="text-lg font-medium text-[#1a365d]">Event Schedule</h2>
               <Link href="/admin/events" className="p-2 text-slate-400 hover:text-[#0096a4] hover:bg-[#0096a4]/5 rounded-xl transition-colors">
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 stroke-[1.5]" />
               </Link>
             </div>
             <div className="p-6 space-y-5">
-              {UPCOMING_EVENTS.map((event) => (
-                <div key={event.id} className="flex gap-4 group cursor-pointer items-start">
-                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 shrink-0 group-hover:border-[#0096a4]/40 group-hover:bg-[#0096a4]/10 transition-all shadow-sm">
-                    <span className="text-[10px] font-bold text-slate-500 uppercase leading-none mb-1.5 group-hover:text-[#0096a4]">Jun</span>
-                    <span className="text-sm font-bold text-[#1a365d] leading-none group-hover:text-[#0096a4]">{event.date.split(' ')[1].replace(',', '')}</span>
-                  </div>
-                  <div className="flex-1 pt-0.5">
-                    <h4 className="text-sm font-semibold text-[#1a365d] group-hover:text-[#0096a4] transition-colors line-clamp-1">{event.title}</h4>
-                    <div className="flex items-center gap-2.5 mt-2">
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">{event.type}</span>
-                      <span className="text-[11px] text-slate-500 font-medium">{event.attendees} Registered</span>
+              {eventSchedule.length > 0 ? (
+                eventSchedule.map((event: any) => {
+                  const eventDate = new Date(event.date);
+                  const month = eventDate.toLocaleDateString('en-US', { month: 'short' });
+                  const day = eventDate.toLocaleDateString('en-US', { day: '2-digit' });
+                  
+                  return (
+                    <div key={event.id} className="flex gap-4 group items-start">
+                      <div className="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 shrink-0 group-hover:border-[#0096a4]/40 group-hover:bg-[#0096a4]/10 transition-all shadow-sm">
+                        <span className="text-[10px] font-medium text-slate-500 uppercase leading-none mb-1.5 group-hover:text-[#0096a4]">{month}</span>
+                        <span className="text-sm font-medium text-[#1a365d] leading-none group-hover:text-[#0096a4]">{day}</span>
+                      </div>
+                      <div className="flex-1 pt-0.5">
+                        <h4 className="text-sm font-medium text-[#1a365d] group-hover:text-[#0096a4] transition-colors line-clamp-1">{event.title}</h4>
+                        <div className="flex items-center gap-2.5 mt-2">
+                          <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 uppercase tracking-widest">{event.type}</span>
+                          <span className="text-[10px] text-slate-500 font-medium uppercase tracking-widest">{event.attendees} Registered</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  );
+                })
+              ) : (
+                <p className="text-sm font-normal text-slate-500 text-center">No upcoming events.</p>
+              )}
             </div>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6">
-            <h2 className="text-lg font-semibold text-[#1a365d] mb-1">Quick Links</h2>
-            <p className="text-sm text-slate-500 font-medium mb-6">Access portals and configurations.</p>
+          {/* Quick Links Card */}
+          <div className="bg-white border border-slate-100 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6 md:p-8">
+            <h2 className="text-lg font-medium text-[#1a365d] mb-1">Quick Links</h2>
+            <p className="text-sm text-slate-500 font-normal mb-6">Access portals and configurations.</p>
             
             <div className="space-y-3">
               <Link href="/" target="_blank" className="flex items-center gap-4 p-3 rounded-2xl border border-slate-100 hover:border-[#0096a4]/30 hover:bg-[#0096a4]/5 hover:shadow-md hover:shadow-[#0096a4]/5 transition-all group">
                 <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-[#0096a4] group-hover:border-[#0096a4]/30 group-hover:bg-white transition-colors shadow-sm">
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4 stroke-[1.5]" />
                 </div>
                 <div className="flex-1">
-                  <span className="text-sm font-semibold text-slate-700 group-hover:text-[#1a365d] transition-colors">Public Site</span>
+                  <span className="text-sm font-medium text-slate-700 group-hover:text-[#1a365d] transition-colors">Public Site</span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#0096a4] transition-colors mr-1" />
+                <ArrowRight className="w-4 h-4 stroke-[1.5] text-slate-300 group-hover:text-[#0096a4] transition-colors mr-1" />
               </Link>
               
               <Link href="/admin/settings" className="flex items-center gap-4 p-3 rounded-2xl border border-slate-100 hover:border-[#0096a4]/30 hover:bg-[#0096a4]/5 hover:shadow-md hover:shadow-[#0096a4]/5 transition-all group">
                 <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-[#0096a4] group-hover:border-[#0096a4]/30 group-hover:bg-white transition-colors shadow-sm">
-                  <Settings className="w-4 h-4" />
+                  <Settings className="w-4 h-4 stroke-[1.5]" />
                 </div>
                 <div className="flex-1">
-                  <span className="text-sm font-semibold text-slate-700 group-hover:text-[#1a365d] transition-colors">System Settings</span>
+                  <span className="text-sm font-medium text-slate-700 group-hover:text-[#1a365d] transition-colors">System Settings</span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#0096a4] transition-colors mr-1" />
+                <ArrowRight className="w-4 h-4 stroke-[1.5] text-slate-300 group-hover:text-[#0096a4] transition-colors mr-1" />
               </Link>
             </div>
           </div>

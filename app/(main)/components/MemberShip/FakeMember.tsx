@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-
+import { useRouter } from "next/navigation";  
+ 
 // Utility to load the Razorpay script dynamically
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -14,8 +15,9 @@ const loadRazorpayScript = () => {
 };
 
 export default function MembershipCheckoutButton({ user }: { user: any }) {
-  const [isLoading, setIsLoading] = useState(false);
 
+  const router = useRouter();  
+  const [isLoading, setIsLoading] = useState(false);
   const handlePayment = async () => {
     setIsLoading(true);
 
@@ -33,8 +35,12 @@ export default function MembershipCheckoutButton({ user }: { user: any }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
-      
+      if (response.status === 401) {
+        router.push("/login");
+        return;
+      }
       const orderData = await response.json();
+     
       console.log(response);
 
       if (!response.ok) {

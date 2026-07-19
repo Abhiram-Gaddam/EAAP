@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { 
   ArrowLeft, Save, Trash2, GripHorizontal, Loader2, Type, 
   Settings2, Baseline, AlignLeft, AlignCenter, AlignRight, QrCode, Eye,
-  CalendarDays
+  CalendarDays,UserCircle2
 } from 'lucide-react';
 import { getCertificateTemplate, updateCertificateTemplate } from '@/app/lib/utilities/apis';
 import CertificatePreviewModal from '@/app/(admin)/components/certificateModel';
@@ -13,7 +13,7 @@ import { AnimatePresence } from 'framer-motion';
  
 type Placeholder = {
   id: string;
-  type: 'text' | 'qr';
+  type: 'text' | 'qr' |'photo';
   key: string;
   x: number;
   y: number;
@@ -21,13 +21,18 @@ type Placeholder = {
   fontColor: string;
   align: 'left' | 'center' | 'right';
   fontFamily: string;
+   // Photo-only fields
+   photoWidth?: number;
+   photoHeight?: number;
+   photoShape?: 'circle' | 'square';
 };
 
 const PREVIEW_DATA: Record<string, string> = {
   '{{name}}': 'Dr. Sarah Venkata Reddy',
   '{{date}}': 'August 15, 2026',
   '{{eventName}}': 'Annual Clinical Embryology Symposium',
-  '{{id}}': 'CERT-123456789'
+  '{{id}}': 'CERT-123456789',
+  '{{photo}}': 'https://i.pravatar.cc/300'
 };
 
 export default function CertificateEditorPage({ params }: { params: Promise<{ id: string }> }) {
@@ -89,17 +94,19 @@ export default function CertificateEditorPage({ params }: { params: Promise<{ id
     }
   };
 
-  const addPlaceholder = (type: 'text' | 'qr', defaultKey: string) => {
+  const addPlaceholder = (type: 'text' | 'qr' | 'photo', defaultKey: string) => {
     const newPh: Placeholder = {
       id: `${type}_${Date.now()}`,
       type,
       key: defaultKey,
       x: imageNativeSize.w ? imageNativeSize.w / 2 : 500,
       y: imageNativeSize.h ? imageNativeSize.h / 2 : 500,
-      fontSize: type === 'qr' ? '200px' : '60px', 
+      fontSize: type === 'qr' ? '200px' : '60px',
       fontColor: '#1a365d',
       align: 'center',
-      fontFamily: 'serif'
+      fontFamily: 'serif',
+      // Photo defaults
+      ...(type === 'photo' && { photoWidth: 200, photoHeight: 200, photoShape: 'circle' })
     };
     setPlaceholders([...placeholders, newPh]);
     setSelectedId(newPh.id);
@@ -227,6 +234,9 @@ export default function CertificateEditorPage({ params }: { params: Promise<{ id
               <button onClick={() => addPlaceholder('qr', '{{id}}')} className="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:border-[#0096a4] hover:bg-[#0096a4]/5 text-[#1a365d] hover:text-[#0096a4] transition-all bg-slate-50 shadow-sm">
                 <QrCode className="w-5 h-5 mb-1.5" /> <span className="text-[10px] font-bold uppercase tracking-wide">QR Code</span>
               </button>
+              <button onClick={() => addPlaceholder('photo', '{{photo}}')} className="flex flex-col items-center justify-center p-3 rounded-xl border border-slate-200 hover:border-[#0096a4] hover:bg-[#0096a4]/5 text-[#1a365d] hover:text-[#0096a4] transition-all bg-slate-50 shadow-sm">
+                <UserCircle2 className="w-5 h-5 mb-1.5" /> <span className="text-[10px] font-bold uppercase tracking-wide">Photo</span>
+              </button>
             </div>
           </div>
           <div className="flex-1 overflow-y-auto p-5 custom-scrollbar">
@@ -235,7 +245,13 @@ export default function CertificateEditorPage({ params }: { params: Promise<{ id
               {placeholders.map(ph => (
                 <div key={ph.id} onClick={() => setSelectedId(ph.id)} className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition-all shadow-sm ${selectedId === ph.id ? 'border-[#0096a4] bg-[#0096a4]/5 text-[#0096a4] shadow-[#0096a4]/10' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>
                   <div className="flex items-center gap-3 truncate">
-                    <div className={`p-1.5 rounded-md ${selectedId === ph.id ? 'bg-[#0096a4]/10' : 'bg-slate-100'}`}>{ph.type === 'qr' ? <QrCode className="w-4 h-4 shrink-0" /> : <Type className="w-4 h-4 shrink-0" />}</div>
+                    <div className={`p-1.5 rounded-md ${selectedId === ph.id ? 'bg-[#0096a4]/10' : 'bg-slate-100'}`}>
+                    {ph.type === 'qr' 
+                        ? <QrCode className="w-4 h-4 shrink-0" /> 
+                        : ph.type === 'photo' 
+                          ? <UserCircle2 className="w-4 h-4 shrink-0" />
+                          : <Type className="w-4 h-4 shrink-0" />
+                      }</div>
                     <span className="text-sm font-bold truncate">{ph.key}</span>
                   </div>
                   <GripHorizontal className={`w-4 h-4 ${selectedId === ph.id ? 'opacity-100' : 'opacity-30'}`} />
@@ -282,7 +298,12 @@ export default function CertificateEditorPage({ params }: { params: Promise<{ id
                     style={{
                       left: `${ph.x * renderScale}px`,
                       top: `${ph.y * renderScale}px`,
-                      transform: ph.align === 'center' ? 'translate(-50%, -50%)' : ph.align === 'right' ? 'translate(-100%, -50%)' : 'translate(0, -50%)',
+                      transform: ph.type === 'photo'
+                    ? 'translate(-50%, -50%)'
+                    : ph.align === 'center' ? 'translate(-50%, -50%)' 
+                    : ph.align === 'right' ? 'translate(-100%, -50%)' 
+                    : 'translate(0, -50%)',
+
                       fontSize: `${parseFloat(ph.fontSize) * renderScale}px`,
                       color: ph.fontColor,
                       fontFamily: ph.fontFamily,
@@ -291,7 +312,21 @@ export default function CertificateEditorPage({ params }: { params: Promise<{ id
                       touchAction: 'none' 
                     }}
                   >
-                    {ph.type === 'qr' ? (
+                    {ph.type === 'photo' ? (
+                          <div
+                            className="border-2 border-dashed border-purple-400 bg-purple-50/40 flex flex-col items-center justify-center overflow-hidden"
+                            style={{
+                              width: `${(ph.photoWidth ?? 200) * renderScale}px`,
+                              height: `${(ph.photoHeight ?? 200) * renderScale}px`,
+                              borderRadius: ph.photoShape === 'circle' ? '50%' : '8px',
+                            }}
+                          >
+                            {showPreviewText 
+                              ? <img src={PREVIEW_DATA['{{photo}}']} alt="Preview" className="w-full h-full object-cover" style={{ borderRadius: ph.photoShape === 'circle' ? '50%' : '8px' }} />
+                              : <UserCircle2 className="text-purple-300 w-1/2 h-1/2" />
+                            }
+                          </div>
+                        ) : ph.type === 'qr' ? (
                        <div className="bg-white p-1 rounded-sm border border-slate-200 flex items-center justify-center shadow-sm" style={{ width: `${parseFloat(ph.fontSize) * renderScale}px`, height: `${parseFloat(ph.fontSize) * renderScale}px` }}>
                           <QrCode className="w-full h-full text-slate-800" />
                        </div>
@@ -372,6 +407,43 @@ export default function CertificateEditorPage({ params }: { params: Promise<{ id
                     </div>
                   </>
                 )}
+                {selectedPh.type === 'photo' && (
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Width (Native Px)</label>
+                            <input 
+                              type="number" 
+                              value={selectedPh.photoWidth ?? 200} 
+                              onChange={e => updateSelected({ photoWidth: Number(e.target.value) })} 
+                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 focus:ring-2 focus:ring-[#0096a4]/20 outline-none" 
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Height (Native Px)</label>
+                            <input 
+                              type="number" 
+                              value={selectedPh.photoHeight ?? 200} 
+                              onChange={e => updateSelected({ photoHeight: Number(e.target.value) })} 
+                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 focus:ring-2 focus:ring-[#0096a4]/20 outline-none" 
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Photo Shape</label>
+                          <div className="flex bg-slate-50 p-1.5 rounded-xl border border-slate-200 shadow-inner gap-2">
+                            <button 
+                              onClick={() => updateSelected({ photoShape: 'circle' })} 
+                              className={`flex-1 py-2.5 rounded-lg text-sm font-bold transition-all ${selectedPh.photoShape === 'circle' ? 'bg-white shadow-md text-[#0096a4]' : 'text-slate-400 hover:text-slate-600'}`}
+                            >⬤ Circle</button>
+                            <button 
+                              onClick={() => updateSelected({ photoShape: 'square' })} 
+                              className={`flex-1 py-2.5 rounded-lg text-sm font-bold transition-all ${selectedPh.photoShape === 'square' ? 'bg-white shadow-md text-[#0096a4]' : 'text-slate-400 hover:text-slate-600'}`}
+                            >■ Square</button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                 <div className="pt-8 border-t border-slate-100 mt-8">
                   <button onClick={removeSelected} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-bold transition-all shadow-sm">

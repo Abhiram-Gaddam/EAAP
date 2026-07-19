@@ -96,7 +96,7 @@ export default function ApplicationsPage() {
 
   // Dynamic Metrics
   const totalApps = applications.length;
-  const pendingApps = applications.filter(a => a.status === 'PENDING').length;
+  const pendingApps = applications.filter(a => a.status === 'PENDING_APPROVAL').length;
   const approvedApps = applications.filter(a => a.status === 'APPROVED').length;
   const rejectedApps = applications.filter(a => a.status === 'REJECTED').length;
 
@@ -242,7 +242,7 @@ export default function ApplicationsPage() {
                       
                       <td className="px-5 py-4">
                         <span className={`inline-flex px-3 py-1 rounded-full border text-[11px] font-medium ${
-                           app.status === 'PENDING' ? 'text-amber-600 bg-amber-50 border-amber-200' :
+                           app.status === 'PENDING_APPROVAL' ? 'text-amber-600 bg-amber-50 border-amber-200' :
                            app.status === 'APPROVED' ? 'text-emerald-600 bg-emerald-50 border-emerald-200' :
                            'text-red-600 bg-red-50 border-red-200'
                         }`}>

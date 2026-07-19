@@ -67,7 +67,7 @@ export async function loginUser(credentials: Record<string, string>): Promise<an
   
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.error || 'Registration failed');
+       throw new Error(errorData.error || 'Registration failed');
     }
   
     return response.json();
@@ -87,6 +87,21 @@ export async function loginUser(credentials: Record<string, string>): Promise<an
   
     return response.json();
   }
+
+  export async function getAdminDashboard(): Promise<any> {
+    const response = await fetch('/api/admin/dashboard', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to fetch admin dashboard data');
+    }
+    
+    return response.json();
+  }
+
   export async function getAllApplications(): Promise<any> {
     const response = await fetch('/api/admin/applications', {
       method: 'GET',

@@ -74,7 +74,7 @@ export default function MembershipPage() {
       {/* 4. Document Checklist & Cancellation Policies (To be added) */}
       <TermsAndDocuments />
 
-      <MembershipCheckoutButton user={currentUser} ></MembershipCheckoutButton>
+      {/* <MembershipCheckoutButton user={currentUser} ></MembershipCheckoutButton> */}
 
     </main>
     

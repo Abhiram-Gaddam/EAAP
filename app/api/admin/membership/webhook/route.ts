@@ -1,3 +1,4 @@
+// @/app/api/admin/membership/webhook/route.ts
 import { NextResponse } from 'next/server';
 import { supabase } from '@/app/lib/utilities/supabase';
 import crypto from 'crypto';
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
         .upsert(
           {
             userId: txData.userId,
-            status: 'PENDING',
+            status: 'PENDING_APPROVAL',
             updatedAt: new Date().toISOString(),
           },
           { onConflict: 'userId' }

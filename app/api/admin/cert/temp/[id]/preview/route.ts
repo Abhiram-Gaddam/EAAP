@@ -28,6 +28,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
         const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
         text = `${baseUrl}/verify/sample-event-id/sample-user-id`;
       }
+      if (p.type === 'photo' || p.key === '{{photo}}') {
+        text = 'https://i.pravatar.cc/300'; // swap with your own CDN placeholder if preferred
+      }
     return { ...p, text };
   });
 

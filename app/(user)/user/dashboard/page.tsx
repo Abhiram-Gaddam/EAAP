@@ -55,7 +55,7 @@ export default function UserDashboard() {
     publications: { total: 0, pending: 0, approved: 0, rejected: 0 }
   };
 
-  const isMembershipActive = user.membershipStatus === 'ACTIVE';
+  const isMembershipActive = user.membershipStatus === 'APPROVED';
 
   return (
     <div className="w-full max-w-[1400px] mx-auto space-y-6">
@@ -87,7 +87,7 @@ export default function UserDashboard() {
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-6">
         
         {/* Membership Card */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-xl border border-slate-100 p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col">

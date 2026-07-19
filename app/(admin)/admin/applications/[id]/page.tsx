@@ -103,7 +103,7 @@ export default function ApplicationDetail({ params }: { params: Promise<{ id: st
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-2xl font-semibold text-[#1a365d]">Applicant: {user.fullName}</h1>
             <span className={`inline-flex px-3 py-1 rounded-lg border text-xs font-semibold ${
-              status === 'PENDING' ? 'text-amber-700 bg-amber-50 border-amber-200/60' : 
+              status === 'PENDING_APPROVAL' ? 'text-amber-700 bg-amber-50 border-amber-200/60' : 
               status === 'APPROVED' ? 'text-emerald-700 bg-emerald-50 border-emerald-200/60' : 
               'text-red-700 bg-red-50 border-red-200/60'
             }`}>
@@ -117,7 +117,7 @@ export default function ApplicationDetail({ params }: { params: Promise<{ id: st
         </div>
         
         <div className="md:ml-auto flex items-center gap-3 mt-4 md:mt-0">
-          {status === 'PENDING' && (
+          {status === 'PENDING_APPROVAL' && (
             <>
               <button 
                 onClick={() => handleStatusUpdate('REJECTED')}

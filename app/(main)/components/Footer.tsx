@@ -47,10 +47,10 @@ export default function Footer() {
                             Reach the Secretariat
                         </span>
                         <a 
-                            href="mailto:info@eaap.org.in" 
+                            href="mailto:eaapindia@gmail.com" 
                             className="text-2xl md:text-3xl lg:text-4xl font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-slate-800 hover:text-[#0096a4] transition-colors border-b-2 border-transparent hover:border-[#0096a4] pb-1 group flex items-center gap-3"
                         >
-                            info@eaap.org.in
+                            eaapindia@gmail.com
                             <ArrowUpRight className="w-5 h-5 md:w-8 md:h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
                         </a>
                     </div>

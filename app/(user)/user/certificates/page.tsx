@@ -7,7 +7,7 @@ import {
   Award, Download, Loader2, AlertCircle, CalendarDays, 
   ShieldCheck, FileBadge, CheckCircle2, ChevronRight 
 } from 'lucide-react';
-import { getUserCertificates, renderEventCertificate } from '@/app/lib/utilities/userApis';
+import { getUserCertificates, renderEventCertificate ,getMembershipCertificate, getCurrentUser } from '@/app/lib/utilities/userApis';
 import CertificatePreviewModal from '@/app/(admin)/components/certificateModel';
  
 export default function UserCertificatesPage() {
@@ -53,9 +53,32 @@ export default function UserCertificatesPage() {
 
   // For the membership certificate (assuming it uses the same render logic, 
   // or a static URL if provided. If static, you'd just window.open it)
-  const handleDownloadMembership = () => {
-    // If you have a specific endpoint for rendering the membership cert, call it here.
-    alert("Membership certificate generation logic goes here.");
+  const handleDownloadMembership = async () => {
+    try {
+      
+      setActiveRenderId('membership'); // Use 'membership' string to indicate loading state on the button
+      
+      // 1. Get the current user session to extract the secure userId
+      const userData = await getCurrentUser();
+      console.log(userData.user.userId)
+      if (!userData?.user?.userId) {
+        throw new Error("Could not authenticate user session.");
+      }
+
+      // 2. Fetch the rendering data from the new endpoint
+      
+      const res = await getMembershipCertificate(userData.user.userId);
+      
+      // 3. Load into the modal
+      setRenderData(res);
+      setPreviewTitle("Membership Certificate");
+      setIsRenderModalOpen(true);
+
+    } catch (err: any) {
+      alert(err.message || "Failed to load membership certificate data.");
+    } finally {
+      setActiveRenderId(null);
+    }
   };
 
   if (isLoading) {
