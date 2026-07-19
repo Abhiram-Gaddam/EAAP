@@ -1,3 +1,4 @@
+// api/admin/applications/[id]/status
 import { verifyAdmin } from '@/app/lib/utilities/auth';
 import { supabase } from '@/app/lib/utilities/supabase';
 import { NextResponse } from 'next/server';
