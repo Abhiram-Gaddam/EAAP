@@ -1,3 +1,4 @@
+// Changed the File Naming Convention 
 import { NextResponse } from 'next/server';
 import { supabase } from '@/app/lib/utilities/supabase';
 import { verifyAdmin} from '@/app/lib/utilities/auth';
