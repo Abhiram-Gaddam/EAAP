@@ -14,8 +14,8 @@ const QUICK_LINKS = [
 ];
 const LEGAL_LINKS = [
     { name: "Terms & Conditions", href: "/legal#membership" },
-    { name: "Privacy Policy", href: "/legal#privacy" },
-    { name: "Cancellation Policy", href: "/legal#cancellation" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Cancellation Policy", href: "/cancellation-policy" },
     { name: "Eligibility Guidelines", href: "/legal#mandate" },
 ];
 

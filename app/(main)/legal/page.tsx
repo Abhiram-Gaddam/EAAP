@@ -247,7 +247,7 @@ export default function LegalCenter() {
                 </div>
                 
                 {/* 3D Elevated Card 2 */}
-                <div className="relative bg-white/70 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-white shadow-[0_2px_15px_rgba(0,0,0,0.02),_0_16px_50px_rgba(0,0,0,0.04)] overflow-hidden">
+                {/* <div className="relative bg-white/70 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] border border-white shadow-[0_2px_15px_rgba(0,0,0,0.02),_0_16px_50px_rgba(0,0,0,0.04)] overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-slate-200/50 to-transparent rounded-bl-full" />
                   <div className="relative z-10 flex items-center gap-3 mb-6">
                     <span className="flex w-2 h-2 rounded-full bg-[#1a365d] shadow-[0_0_8px_rgba(26,54,93,0.5)]" />
@@ -259,7 +259,7 @@ export default function LegalCenter() {
                   <p className="relative z-10 text-slate-600 font-light text-sm md:text-base leading-relaxed">
                     Each member shall pay Rs.1500/- as annual subscription at the beginning of every year.
                   </p>
-                </div>
+                </div> */}
 
                 {/* Wide Glass Card */}
                 <div className="md:col-span-2 relative bg-[#1a365d] p-10 rounded-[2.5rem] overflow-hidden shadow-[0_10px_30px_rgba(26,54,93,0.15),_0_30px_60px_rgba(26,54,93,0.2)] border border-[#1a365d]">

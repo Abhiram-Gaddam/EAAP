@@ -53,7 +53,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1">Email</p>
-                <a href="mailto:support@eaap.in" className="text-base font-medium text-slate-800 hover:text-[#0096a4] transition-colors">support@eaap.in</a>
+                <a href="mailto:eaapindia@gmail.com" className="text-base font-medium text-slate-800 hover:text-[#0096a4] transition-colors">eaapindia@gmail.com</a>
               </div>
             </div>
             
@@ -73,7 +73,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-[11px] font-medium text-slate-400 uppercase tracking-widest mb-1">Office</p>
-                <p className="text-base font-medium text-slate-800">123 Innovation Drive<br/>Tech Park, AP 522001</p>
+                {/* <p className="text-base font-medium text-slate-800">123 Innovation Drive<br/>Tech Park, AP 522001</p> */}
+                <p className="text-base font-medium text-slate-800">Door No.3-161/53-509, Nidamanuru, Vijayawada Rural, <br/>N.T.R. District, AP 522001</p>
               </div>
             </div>
           </div>
