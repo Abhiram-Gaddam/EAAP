@@ -102,8 +102,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'DB update failed' }, { status: 500 });
   }
 
-  console.log(user.userId + ": Before Upsert");
-  
+   
   // Upsert membership to PENDING_APPROVAL
   const { error: upsertError } = await supabase
     .from('MembershipDetails')
@@ -112,8 +111,7 @@ export async function POST(request: Request) {
       { onConflict: 'userId' }
     );
     
-  console.log(user.userId + ": After Upsert");
-
+ 
   if (upsertError) {
     console.error('Membership upsert failed:', upsertError);
     return NextResponse.json({ error: 'Membership update failed' }, { status: 500 });

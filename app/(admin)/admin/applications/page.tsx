@@ -76,8 +76,7 @@ export default function ApplicationsPage() {
   };
 
   const handleStatusUpdate = async (id: string, newStatus: 'APPROVED' | 'REJECTED') => {
-    console.log("Attempting to update status for ID:", id); // Check this value!
-    try {
+     try {
         await updateApplicationStatus(id, newStatus);
         setActiveDropdown(null);
         fetchData(); // Refresh the list

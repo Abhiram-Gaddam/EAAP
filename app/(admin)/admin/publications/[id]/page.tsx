@@ -42,8 +42,7 @@ export default function PublicationDetailPage({ params }: { params: Promise<{ id
       // Fallback fetch all and filter if no specific GET [id] exists
       const currentPub = await getAdminPublicationDetails(id);
        
-      console.log("Publication Data " ,currentPub);
-
+ 
       if (!currentPub) throw new Error("Publication not found.");
       
       setPub(currentPub);

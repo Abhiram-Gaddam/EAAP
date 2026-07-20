@@ -306,8 +306,7 @@ export async function getCertificateTemplates(): Promise<any> {
     const errorData = await response.json();
     throw new Error(errorData.error || 'Failed to fetch certificate templates');
   }
-  console.log(response)
-  return response.json();
+   return response.json();
 }
 
 export async function getCertificateTemplate(id: string): Promise<any> {

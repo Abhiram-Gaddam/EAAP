@@ -20,8 +20,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       if (coverImage) {
         coverUrl = await uploadToS3CustomPath(coverImage, `events/${id}/cover`);
       }
-      console.log('Events : ',coverImage);
-      
+       
   
       for (const file of galleryFiles) {
         const sanitizedName = file.name.replace(/\.[^/.]+$/, "").replace(/[^a-z0-9]/gi, '_').toLowerCase();

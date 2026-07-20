@@ -22,7 +22,7 @@ const memberImages = [
 const membersWithAssets = GOVERNING_BODY.map((member, index) => ({
     ...member,
     // Using colored medical/professional placeholder images
-    image: `/images/dummy/${memberImages[index]}`,
+    image: `${member.image}`,
 
     message: index === 0 
         ? "As the President of EAAP, my primary vision is to elevate the clinical standards across Andhra Pradesh. We are at a critical juncture in reproductive medicine, and fostering continuous innovation in ART is no longer optional—it is imperative for the future of patient care. \n\nOur commitment extends beyond the laboratory; it is about building a cohesive community of professionals who are equipped with the latest scientific knowledge and ethical frameworks to lead this field globally."

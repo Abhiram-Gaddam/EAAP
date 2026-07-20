@@ -15,8 +15,7 @@ export async function POST(request: Request) {
     const file = formData.get('background') as File;
 
     if (!file || !name || !placeholdersStr) {
-        console.log(file ,'\n' ,name ,'\n', placeholdersStr);
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     const placeholders = JSON.parse(placeholdersStr);

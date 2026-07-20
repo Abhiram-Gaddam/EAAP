@@ -143,7 +143,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     if (p.type === 'qr' || p.key === '{{id}}' || p.key === '{{verify_url}}') {
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
       text = `${baseUrl}/verify/${id}/${userId}`;
-    }
+     }
 
     // ── NEW: photo placeholder ─────────────────────────────────────────────
     if (p.type === 'photo' || p.key === '{{photo}}') {
@@ -152,6 +152,5 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     return { ...p, text };
   });
-console.log(renderData);
-  return NextResponse.json({ backgroundUrl: secureBackgroundUrl, renderData }, { status: 200 });
+   return NextResponse.json({ backgroundUrl: secureBackgroundUrl, renderData }, { status: 200 });
 }

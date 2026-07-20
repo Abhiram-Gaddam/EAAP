@@ -3,8 +3,7 @@ import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 export async function middleware(request: NextRequest) {
-  // console.log("MIDDLEWARE HIT:", request.nextUrl.pathname);
-
+ 
   const token = request.cookies.get('token')?.value;
   const { pathname } = request.nextUrl;
 

@@ -10,6 +10,7 @@ export interface AimObjective {
     age: number;
     designation: string;
     address: string;
+    image?: string;
   }
   
   export interface LegalCertificate {

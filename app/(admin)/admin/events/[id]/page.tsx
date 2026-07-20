@@ -970,8 +970,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ id: stri
     try {
       setIsRenderLoading(true);
       const res = await previewCertificateTemplate(templateId);
-      console.log ("Handle PReview",res);
-
+ 
       setRenderData(res);
     } catch (err: any) {
       alert(err.message || "Failed to generate preview.");
@@ -987,8 +986,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ id: stri
     try {
       setIsRenderLoading(true);
       const res = await getUserCertificateData(id, userId);
-      console.log ("handleDownload",res);
-      setRenderData(res);
+       setRenderData(res);
     } catch (err: any) {
       alert(err.message || "Failed to load certificate data.");
       setIsRenderModalOpen(false);

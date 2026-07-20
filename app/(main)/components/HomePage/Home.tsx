@@ -246,15 +246,42 @@ export default function HomeClient() {
               </span>
             </motion.h1>
 
-            <motion.p 
+            {/* <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
               className="mt-6 md:mt-8 text-lg md:text-2xl text-slate-600 max-w-2xl font-light leading-relaxed"
             >
               {ASSOCIATION_INFO.tagline}. We are the official professional body setting benchmarks in <span className="italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] font-medium">clinical embryology</span> and <span className="italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] font-medium">Assisted Reproductive Technology</span> across Andhra Pradesh.
-            </motion.p>
+            </motion.p> */}
 
+<motion.p
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, delay: 0.4 }}
+  className="mt-6 md:mt-8 text-lg md:text-2xl text-slate-600 max-w-2xl font-light leading-relaxed"
+>
+  <span className="font-semibold text-[#1a365d]">
+    Embryologists Association of Andhra Pradesh (EAAP)
+  </span>{" "}
+  is India's{" "}
+  <span className="italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] font-medium">
+    first registered state-level association
+  </span>{" "}
+  exclusively dedicated to{" "}
+  <span className="italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] font-medium">
+    clinical embryologists
+  </span>
+  , advancing{" "}
+  <span className="italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] font-medium">
+    Clinical Embryology
+  </span>{" "}
+  and{" "}
+  <span className="italic font-['Playfair_Display',_'Playfair_Display_Fallback',_serif] text-[#1a365d] font-medium">
+    Assisted Reproductive Technology (ART)
+  </span>
+  .
+</motion.p>  
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -306,8 +333,8 @@ export default function HomeClient() {
                 Setting the <span className="italic text-[#0096a4]">gold standard</span> in clinical embryology.
               </h2>
               <p className="mt-8 text-lg text-slate-500 font-light leading-relaxed">
-                {ASSOCIATION_INFO.actReference}. We are the authoritative voice and regulatory representative for reproductive medicine professionals across Andhra Pradesh.
-              </p>
+  {ASSOCIATION_INFO.actReference}. A common platform uniting clinical embryologists to advance education, research, professional excellence, and ethical practices in Assisted Reproductive Technology (ART).
+</p>
             </motion.div>
 
             {/* Reintegrated Value Props for Layout Balance */}

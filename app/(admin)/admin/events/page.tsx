@@ -90,8 +90,7 @@ export default function EventsPage() {
     try {
       setIsLoading(true);
       const data = await getAllEvents();
-      console.log("Admin Events :",data)
-      setEvents(data || []);
+       setEvents(data || []);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch events');
     } finally {

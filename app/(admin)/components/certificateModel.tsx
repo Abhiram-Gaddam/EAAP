@@ -427,8 +427,7 @@ export default function CertificatePreviewModal({
                 {imageNativeSize.w > 0 &&
                   previewData.renderData.map((ph: any) => {
                     // Photo is always centre-anchored; text respects the align setting
-                    console.log(previewData.renderData);
-                    const transform =
+                     const transform =
                       ph.type === 'photo'
                         ? 'translate(-50%, -50%)'
                         : ph.align === 'center'

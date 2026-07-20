@@ -72,8 +72,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     
     // Generates the unique verification URL for the QR code
     if (p.type === 'qr' || p.key === '{{id}}' || p.key === '{{verify_url}}') {
-        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eaap.in/';
+        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eaap.in';
         text = `${baseUrl}/verify/${id}/${userId}`;
+ 
     }
     if (p.type === 'photo' || p.key === '{{photo}}') {
       text = resolvedPhotoUrl; // presigned S3 URL or DEFAULT_PHOTO_URL
@@ -81,8 +82,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     
     return { ...p, text };
   });
-console.log(renderData)
-  return NextResponse.json({ 
+   return NextResponse.json({ 
     backgroundUrl: secureBackgroundUrl, 
     renderData 
   }, { status: 200 });

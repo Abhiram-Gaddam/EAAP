@@ -5,7 +5,7 @@ export const ASSOCIATION_INFO = {
   abbreviation: "EAAP",
   tagline: "Empowering Embryologists - Advancing Science",
   registeredAddress: "Door No.3-161/53-509, Nidamanuru, Vijayawada Rural, N.T.R. District.",
-  actReference: "Andhra Pradesh Societies Registration Act 35 of 2001",
+  actReference: "Andhra Pradesh Societies Registration Act, 2001",
 };
 
 export const AIMS_AND_OBJECTIVES: AimObjective[] = [
@@ -19,6 +19,81 @@ export const AIMS_AND_OBJECTIVES: AimObjective[] = [
   { id: 8, text: "To represent embryologists in legal, regulatory, and professional matters" },
 ];
 
+// export const GOVERNING_BODY: BoardMember[] = [
+//   {
+//     sNo: 1,
+//     name: "Yejarla Kishore Babu",
+//     fatherName: "Veeraiah",
+//     age: 45,
+//     designation: "President",
+//     address: "Door No.Fno-59, Pavan clasic Aparts, Nidamaluru, Vijayawadarural, N.T.R. Distrcit.",
+//   },
+//   {
+//     sNo: 2,
+//     name: "Tatikonda Suresh Kumar",
+//     fatherName: "Appalaraju",
+//     age: 45,
+//     designation: "Vice-President",
+//     address: "Door No.16-747,Plotno-88, GVMC Layout, Visakhapatnam,",
+//   },
+//   {
+//     sNo: 3,
+//     name: "Valluri Lenin Babu",
+//     fatherName: "Venkata Rao",
+//     age: 38,
+//     designation: "Secretary",
+//     address: "Door No.6-40, Srinagar Colony, Ongole, Prakasam District.",
+//   },
+//   {
+//     sNo: 4,
+//     name: "Palavalasa Dileep Kumar",
+//     fatherName: "Surya Rao",
+//     age: 35,
+//     designation: "Joint-Secretary",
+//     address: "Door No.8-4, Lasya Township Tallavalasa,chittivalasa, Visakhapatnam District.",
+//   },
+//   {
+//     sNo: 5,
+//     name: "Venkata B Subrahmanyam",
+//     fatherName: "Venkateswarlu",
+//     age: 37,
+//     designation: "Treasurer",
+//     address: "Door No.2-17,Enikepadu, Vijayawadarural, NTR.District.",
+//   },
+//   {
+//     sNo: 6,
+//     name: "Pancheti Midhun Chakravarthi",
+//     fatherName: "Not Specified",
+//     age: 38,
+//     designation: "Joint Treasurer",
+//     address: "Door No.0-0,Poolathota, H W Anepudi, Nellore District.",
+//   },
+//   {
+//     sNo: 7,
+//     name: "Kolli Eswara Rao",
+//     fatherName: "Pidiayya",
+//     age: 38,
+//     designation: "Executive Member",
+//     address: "Door No.0-0, Regapalem, Srikakulam District.",
+//   },
+//   {
+//     sNo: 8,
+//     name: "Modurthi Siva Krishna",
+//     fatherName: "Sekhar",
+//     age: 36,
+//     designation: "Executive Member",
+//     address: "Door No. 12, Pedagudem, Ghantasala, Krishna District.",
+//   },
+//   {
+//     sNo: 9,
+//     name: "Kanumetta Srikanth",
+//     fatherName: "Not Specified",
+//     age: 38,
+//     designation: "Executive Member",
+//     address: "F/502,5th Floor, Natures Pride, Yendada, Visakhapatnam District.",
+//   },
+// ];
+
 export const GOVERNING_BODY: BoardMember[] = [
   {
     sNo: 1,
@@ -27,6 +102,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 45,
     designation: "President",
     address: "Door No.Fno-59, Pavan clasic Aparts, Nidamaluru, Vijayawadarural, N.T.R. Distrcit.",
+    image: "/images/team/y-kishore-babu.webp"
   },
   {
     sNo: 2,
@@ -35,6 +111,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 45,
     designation: "Vice-President",
     address: "Door No.16-747,Plotno-88, GVMC Layout, Visakhapatnam,",
+    image: "/images/team/t-suresh-kumar.webp"
   },
   {
     sNo: 3,
@@ -43,6 +120,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 38,
     designation: "Secretary",
     address: "Door No.6-40, Srinagar Colony, Ongole, Prakasam District.",
+    image: "/images/team/v-lenin-babu.webp"
   },
   {
     sNo: 4,
@@ -51,6 +129,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 35,
     designation: "Joint-Secretary",
     address: "Door No.8-4, Lasya Township Tallavalasa,chittivalasa, Visakhapatnam District.",
+    image: "/images/team/p-dileep-kumar.webp"
   },
   {
     sNo: 5,
@@ -59,6 +138,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 37,
     designation: "Treasurer",
     address: "Door No.2-17,Enikepadu, Vijayawadarural, NTR.District.",
+    image: "/images/team/venkata-b-subrahmanyam.webp"
   },
   {
     sNo: 6,
@@ -67,6 +147,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 38,
     designation: "Joint Treasurer",
     address: "Door No.0-0,Poolathota, H W Anepudi, Nellore District.",
+    image: "/images/team/p-midhun-chakravarthy.webp"
   },
   {
     sNo: 7,
@@ -75,6 +156,8 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 38,
     designation: "Executive Member",
     address: "Door No.0-0, Regapalem, Srikakulam District.",
+    image: "/images/team/k-eswar-rao.webp",
+     
   },
   {
     sNo: 8,
@@ -83,6 +166,8 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 36,
     designation: "Executive Member",
     address: "Door No. 12, Pedagudem, Ghantasala, Krishna District.",
+    image: "/images/team/m-siva-krishna.webp",
+     
   },
   {
     sNo: 9,
@@ -91,6 +176,7 @@ export const GOVERNING_BODY: BoardMember[] = [
     age: 38,
     designation: "Executive Member",
     address: "F/502,5th Floor, Natures Pride, Yendada, Visakhapatnam District.",
+    image: "/images/team/k-sreekanth.webp"
   },
 ];
 

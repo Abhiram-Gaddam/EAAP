@@ -43,8 +43,7 @@ export default function PublicationDetailPage({ params }: { params: Promise<{ id
     try {
       setIsLoading(true);
       const data = await getUserPublicationDetails(id);
-      console.log(data);
-      setPub(data);
+       setPub(data);
       setFormData({
         title: data.title || '',
         problemStatement: data.problemStatement || '',

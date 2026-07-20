@@ -60,8 +60,7 @@ export default function UserCertificatesPage() {
       
       // 1. Get the current user session to extract the secure userId
       const userData = await getCurrentUser();
-      console.log(userData.user.userId)
-      if (!userData?.user?.userId) {
+       if (!userData?.user?.userId) {
         throw new Error("Could not authenticate user session.");
       }
 

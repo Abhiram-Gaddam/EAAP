@@ -57,8 +57,7 @@ export default function PublicationsPage() {
     try {
       setIsLoading(true);
       const data = await getAllAdminPublications();
-      console.log("Publication Data " ,data);
-      setPublications(data || []);
+       setPublications(data || []);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch publications');
     } finally {

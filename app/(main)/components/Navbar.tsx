@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_LINKS = [
   { name: 'About', href: '/about' },
+  { name: 'Team', href: '/team' },
   { 
     name: 'Membership', 
     href: '/membership',
@@ -56,7 +57,7 @@ export default function Navbar() {
           {/* CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-4">
             <Link 
-              href="/membership" 
+              href="/register" 
               className="hidden md:flex items-center gap-2 bg-[#0096a4] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#1a365d] hover:shadow-md hover:shadow-[#0096a4]/20 transition-all duration-300"
             >
               Join EAAP
@@ -94,7 +95,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link 
-                href="/membership"
+                href="/register"
                 onClick={() => setIsOpen(false)} 
                 className="mt-4 text-center bg-[#1a365d] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#0096a4] transition-colors"
               >

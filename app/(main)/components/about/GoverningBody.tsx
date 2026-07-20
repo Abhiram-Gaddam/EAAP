@@ -4,18 +4,8 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-// import { GOVERNING_BODY } from "@/constants/data";
-const GOVERNING_BODY = [
-    { sNo: 1, name: "Yejarla Kishore Babu", designation: "President", image: "0.webp" },
-    { sNo: 2, name: "Tatikonda Suresh Kumar", designation: "Vice-President", image: "1.jpeg" },
-    { sNo: 3, name: "Valluri Lenin Babu", designation: "Secretary", image: "2.jpeg" },
-    { sNo: 4, name: "Palavalasa Dileep Kumar", designation: "Joint-Secretary", image: "3.jpeg" },
-    { sNo: 5, name: "Venkata B Subrahmanyam", designation: "Treasurer", image: "4.webp" },
-    { sNo: 6, name: "Pancheti Midhun Chakravarthi", designation: "Joint Treasurer", image: "5.webp" },
-    { sNo: 7, name: "Kolli Eswara Rao", designation: "Executive Member", image: "6.webp" },
-    { sNo: 8, name: "Modurthi Siva Krishna", designation: "Executive Member", image: "7.webp" },
-    { sNo: 9, name: "Kanumetta Srikanth", designation: "Executive Member", image: "8.webp" },
-  ];
+import { GOVERNING_BODY } from "@/app/constants/data";
+ 
 const CARD_GAP = 40;
 
 function VisionaryCard({ 
@@ -32,7 +22,7 @@ function VisionaryCard({
         >
             <div className="relative w-full aspect-[3/4] shrink-0 overflow-hidden rounded-[2rem] bg-slate-200 shadow-lg border border-slate-200/50">
                 <Image
-                    src={`/images/dummy/${member.image}`}
+                    src={`${member.image}`}
                     alt={member.name}
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-105 "

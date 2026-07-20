@@ -25,7 +25,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     if (p.key === '{{date}}') text = new Date().toLocaleDateString();
     if (p.key === '{{event}}') text = 'Sample Event Name';
     if (p.type === 'qr' || p.key === '{{id}}' || p.key === '{{verify_url}}') {
-        const baseUrl = 'https://www.eaap.in/' ;
+        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eaap.in/';
         text = `${baseUrl}/verify/sample-event-id/sample-user-id`;
       }
       if (p.type === 'photo' || p.key === '{{photo}}') {
