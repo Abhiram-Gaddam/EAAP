@@ -21,7 +21,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth selection:bg-[#0096a4]/20">
       {/* Added antialiased for smoother text rendering */}
+      <head>
+      <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-MNVDKK3S');`}
+        </Script>
+      </head>
       <body className={`${inter.className} antialiased bg-white text-gray-900`}>
+      <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MNVDKK3S"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         {/* This will render either your (main) layout or (admin) layout depending on the route */}
         {children}
         <Script
