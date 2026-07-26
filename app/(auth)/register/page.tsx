@@ -425,16 +425,18 @@ export default function RegisterPage() {
 
                     <div className="grid grid-cols-2 gap-3">
                       {[
-                        { label: 'Highest Degree Cert.', name: 'eduCertificate', desc: "BSc/MSc/MD", fileObj: files.eduCertificate },
+                        { label: 'Professional Photo', name: 'photo', desc: "For ID card", fileObj: files.photo , isRequired : true    },
                         { label: 'Govt ID Proof', name: 'govId', desc: "Aadhar/Passport", fileObj: files.govId },
+                        { label: 'Highest Degree Cert.', name: 'eduCertificate', desc: "BSc/MSc/MD", fileObj: files.eduCertificate }, 
                         { label: 'Experience Letter', name: 'expCertificate', desc: "From current/past org", fileObj: files.expCertificate },
-                        { label: 'Passport Photo', name: 'photo', desc: "For ID card", fileObj: files.photo }
+                       
                       ].map((doc, idx) => (
                         <div key={idx} className={`relative group cursor-pointer overflow-hidden rounded-xl border transition-all duration-300 ${doc.fileObj ? 'bg-[#0096a4]/10 border-[#0096a4]' : 'border-slate-200 bg-slate-50 hover:bg-[#0096a4]/5 hover:border-[#0096a4]/40'}`}>
                           <input 
                             type="file" 
                             name={doc.name} 
                             id={doc.name} 
+                            required={!!doc.isRequired}  
                             onChange={(e) => handleFileChange(e, doc.name as keyof typeof files)} 
                             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" 
                             accept=".pdf,image/*" 
@@ -443,8 +445,10 @@ export default function RegisterPage() {
                             <div className={`w-10 h-10 rounded-full shadow-sm border flex items-center justify-center mb-3 transition-transform ${doc.fileObj ? 'bg-[#0096a4] border-[#0096a4] text-white' : 'bg-white border-slate-100 text-slate-400 group-hover:scale-110 group-hover:text-[#0096a4]'}`}>
                               {doc.fileObj ? <CheckCircle2 className="w-5 h-5" /> : <UploadCloud className="w-5 h-5" />}
                             </div>
-                            <span className="text-[12px] font-semibold text-[#1a365d] group-hover:text-[#0096a4] leading-tight transition-colors mb-1">{doc.label}</span>
-                            <span className="text-[10px] text-slate-500 font-light truncate max-w-[100px]">{doc.fileObj ? doc.fileObj.name : doc.desc}</span>
+                            <span className="text-[12px] font-semibold text-[#1a365d] group-hover:text-[#0096a4] leading-tight transition-colors mb-1">
+                              {doc.label} {doc.isRequired && <span className="text-red-500">*</span>}
+                            </span>
+                             <span className="text-[10px] text-slate-500 font-light truncate max-w-[100px]">{doc.fileObj ? doc.fileObj.name : doc.desc}</span>
                           </div>
                         </div>
                       ))}

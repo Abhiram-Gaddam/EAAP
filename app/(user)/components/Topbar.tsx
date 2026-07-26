@@ -351,7 +351,7 @@ export default function UserTopbar() {
           </button>
           
           <div className="hidden sm:flex items-center">
-            <Link href="/dashboard" className="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">
+            <Link href="/user/dashboard" className="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">
               Portal
             </Link>
             {pathname !== '/dashboard' && generateBreadcrumbs()}

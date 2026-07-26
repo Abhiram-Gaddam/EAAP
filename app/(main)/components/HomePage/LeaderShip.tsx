@@ -6,17 +6,15 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { GOVERNING_BODY } from "@/app/constants/data";
 
-const memberImages = [
-    "0.webp",
-    "1.jpeg",
-    "2.jpeg",
-    "3.jpeg",
-    "4.webp",
-    "5.webp",
-    "6.webp",
-    "7.webp",
-    "8.webp",
-];
+const memberMessages: Record<number, string> = {
+    1: "EAAP is dedicated to bringing together embryologists across Andhra Pradesh, fostering professional growth, scientific excellence, and ethical practices in the field of clinical embryology. Through education, collaboration, and continuous learning, we aim to strengthen our fraternity and contribute to advancements in assisted reproductive technology.\n\nI invite all members to actively participate in EAAP initiatives and join hands in shaping a progressive future for embryology.",
+    2: "EAAP serves as a platform to unite embryologists, encourage scientific excellence, and promote continuous learning and professional development. We are committed to strengthening our community through collaboration, education, and ethical practices in clinical embryology.\n\nI look forward to the active participation and support of all members as we work together towards the growth and advancement of our profession.",
+    3: "It is a privilege to serve as the Secretary of the Embryologists Association of Andhra Pradesh (EAAP) and to welcome you to our official website.\n\nEAAP is committed to providing a strong platform for embryologists to connect, learn, and grow through academic activities, professional collaboration, and scientific advancement. Our association strives to promote excellence, encourage innovation, and support the continuous development of embryology professionals.\n\nWith the active involvement of all members, we can build a stronger fraternity and contribute to the progress of reproductive medicine.",
+    4: "I am delighted to be a part of the Embryologists Association of Andhra Pradesh (EAAP) and contribute towards its vision of advancing the field of clinical embryology.\n\nEAAP provides a valuable platform for communication, cooperation, and professional growth among embryologists. Through collective efforts, academic initiatives, and sharing of knowledge and experience, we aim to strengthen our profession and encourage excellence in reproductive science.\n\nI look forward to working together with all members in achieving the goals and aspirations of EAAP.",
+    5: "It is an honor to serve as the Treasurer of the Embryologists Association of Andhra Pradesh (EAAP).\n\nI am committed to ensuring responsible and transparent support for the association’s activities while working towards the growth, unity, and professional advancement of embryologists. Together, we can strengthen EAAP and contribute to the progress of clinical embryology.",
+    6: "It is a privilege to be associated with the Embryologists Association of Andhra Pradesh (EAAP) and contribute to its vision and growth.\n\nAs Joint Treasurer, I am committed to supporting the association’s initiatives with dedication, responsibility, and transparency. Together, with the active involvement of all members, we can strengthen our professional community and promote excellence in clinical embryology."
+};
+
   
 // Generate placeholder images and messages for the members
 const membersWithAssets = GOVERNING_BODY.map((member, index) => ({
@@ -24,11 +22,7 @@ const membersWithAssets = GOVERNING_BODY.map((member, index) => ({
     // Using colored medical/professional placeholder images
     image: `${member.image}`,
 
-    message: index === 0 
-        ? "As the President of EAAP, my primary vision is to elevate the clinical standards across Andhra Pradesh. We are at a critical juncture in reproductive medicine, and fostering continuous innovation in ART is no longer optional—it is imperative for the future of patient care. \n\nOur commitment extends beyond the laboratory; it is about building a cohesive community of professionals who are equipped with the latest scientific knowledge and ethical frameworks to lead this field globally."
-        : index === 2 
-        ? "My role focuses on ensuring transparent operations and rigorous academic pursuits. Seamless communication across all our members is the bedrock of a strong professional society. \n\nWe are actively working on expanding our CME programs and creating robust platforms for knowledge exchange, ensuring every member has a voice and access to the resources they need to thrive."
-        : "Committed to maintaining the highest ethical, legal, and scientific standards in the field of clinical embryology. We believe that professional integrity is the cornerstone of trust between practitioners and patients.",
+    message: memberMessages[member.sNo] || "Committed to maintaining the highest ethical, legal, and scientific standards in the field of clinical embryology.",
 }));
 
 const MemberItem = ({
@@ -101,6 +95,7 @@ export default function LeadershipSection() {
                                 src={member.image}
                                 alt={member.name}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                  className="object-cover" 
                                 priority={member.sNo === 1}
                             />

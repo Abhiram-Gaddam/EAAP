@@ -149,35 +149,35 @@ export const GOVERNING_BODY: BoardMember[] = [
     address: "Door No.0-0,Poolathota, H W Anepudi, Nellore District.",
     image: "/images/team/p-midhun-chakravarthy.webp"
   },
-  {
-    sNo: 7,
-    name: "Kolli Eswara Rao",
-    fatherName: "Pidiayya",
-    age: 38,
-    designation: "Executive Member",
-    address: "Door No.0-0, Regapalem, Srikakulam District.",
-    image: "/images/team/k-eswar-rao.webp",
+  // {
+  //   sNo: 7,
+  //   name: "Kolli Eswara Rao",
+  //   fatherName: "Pidiayya",
+  //   age: 38,
+  //   designation: "Executive Member",
+  //   address: "Door No.0-0, Regapalem, Srikakulam District.",
+  //   image: "/images/team/k-eswar-rao.webp",
      
-  },
-  {
-    sNo: 8,
-    name: "Modurthi Siva Krishna",
-    fatherName: "Sekhar",
-    age: 36,
-    designation: "Executive Member",
-    address: "Door No. 12, Pedagudem, Ghantasala, Krishna District.",
-    image: "/images/team/m-siva-krishna.webp",
+  // },
+  // {
+  //   sNo: 8,
+  //   name: "Modurthi Siva Krishna",
+  //   fatherName: "Sekhar",
+  //   age: 36,
+  //   designation: "Executive Member",
+  //   address: "Door No. 12, Pedagudem, Ghantasala, Krishna District.",
+  //   image: "/images/team/m-siva-krishna.webp",
      
-  },
-  {
-    sNo: 9,
-    name: "Kanumetta Srikanth",
-    fatherName: "Not Specified",
-    age: 38,
-    designation: "Executive Member",
-    address: "F/502,5th Floor, Natures Pride, Yendada, Visakhapatnam District.",
-    image: "/images/team/k-sreekanth.webp"
-  },
+  // },
+  // {
+  //   sNo: 9,
+  //   name: "Kanumetta Srikanth",
+  //   fatherName: "Not Specified",
+  //   age: 38,
+  //   designation: "Executive Member",
+  //   address: "F/502,5th Floor, Natures Pride, Yendada, Visakhapatnam District.",
+  //   image: "/images/team/k-sreekanth.webp"
+  // },
 ];
 
 export const LEGAL_CERTIFICATES: LegalCertificate[] = [

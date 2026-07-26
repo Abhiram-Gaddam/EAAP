@@ -302,6 +302,7 @@ export default function LatestAnnouncements({ news }: { news?: NewsItem[] }) {
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 sizes="(max-width: 768px) 80vw, 30vw"
+                                unoptimized
                             />
 
                             <div className="absolute inset-0 bg-gradient-to-b from-[#1a365d]/80 via-[#1a365d]/20 to-[#1a365d]/95 pointer-events-none" />
