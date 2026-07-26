@@ -260,7 +260,7 @@ export default function PublicPublicationsPage() {
                           
                           <PublicationCover src={pub.coverImage} alt={pub.title} />
                           
-                          <div className="p-6 sm:p-8 md:px-10 flex flex-col flex-1 min-w-0 bg-white group-hover:bg-slate-50/30 transition-colors">
+                          {/* <div className="p-6 sm:p-8 md:px-10 flex flex-col flex-1 min-w-0 bg-white group-hover:bg-slate-50/30 transition-colors">
                             <div className="flex flex-wrap items-center gap-4 mb-4">
                               <span className="text-[10px] font-medium text-[#0096a4] uppercase tracking-widest">
                                 {pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
@@ -293,7 +293,43 @@ export default function PublicPublicationsPage() {
                                 <ArrowRight className="w-4 h-4 stroke-[1.5]" />
                               </div>
                             </div>
-                          </div>
+                          </div> */}
+
+ <div className="p-6 sm:p-8 md:px-10 flex flex-col flex-1 min-w-0 bg-white group-hover:bg-slate-50/30 transition-colors">
+  <div className="flex flex-wrap items-center gap-4 mb-4">
+     <span className="text-[10px] font-medium text-[#0096a4] uppercase tracking-widest">
+      {pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+     </span>
+     <span className="w-1 h-1 rounded-full bg-slate-300" />
+     <span className="flex items-center gap-1.5 text-[10px] font-medium text-slate-400 uppercase tracking-widest">
+      <Clock className="w-3 h-3 stroke-[1.5]" /> {readTime} min read
+     </span>
+    </div>
+   
+    <h3 className="text-xl md:text-2xl font-semibold text-[#1a365d] mb-3 leading-snug group-hover:text-[#0096a4] transition-colors line-clamp-3 pr-4">
+     {pub.title}
+    </h3>
+
+    <p className="text-sm font-normal text-slate-500 mb-6 line-clamp-3 leading-relaxed">
+     {pub.abstract}
+    </p>
+   
+    <div className="mt-auto pt-2 flex items-center justify-between">
+     <div className="flex items-center gap-3 min-w-0 pr-4">
+      <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shrink-0">
+       <span className="text-[10px] font-medium">{pub.authors?.[0]?.charAt(0) || 'U'}</span>
+      </div>
+      <span className="text-sm font-medium text-slate-700 truncate">
+       {pub.authors?.join(', ') || 'Unknown Author'}
+      </span>
+     </div>
+    
+     <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[#0096a4] group-hover:border-[#0096a4] group-hover:text-white transition-all shrink-0">
+      <ArrowRight className="w-4 h-4 stroke-[1.5]" />
+     </div>
+    </div>
+   </div>
+
 
                         </div>
                       </Link>
