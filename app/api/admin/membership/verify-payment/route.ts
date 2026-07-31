@@ -88,9 +88,9 @@ export async function POST(request: Request) {
     .eq('paymentGatewayId', razorpay_order_id)
     .single();
 
-  // if (!txData || txData.status === 'SUCCESS') {
-  //   return NextResponse.json({ message: 'Already processed or not found' }, { status: 200 });
-  // }
+  if (!txData || txData.status === 'SUCCESS') {
+    return NextResponse.json({ message: 'Already processed or not found' }, { status: 200 });
+  }
 
   const { error: updateError } = await supabase
     .from('Transaction')
