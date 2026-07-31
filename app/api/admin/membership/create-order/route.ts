@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   try {
-    const MEMBERSHIP_AMOUNT_INR = 1;
+    const MEMBERSHIP_AMOUNT_INR = 1500;
     const amountInPaise = MEMBERSHIP_AMOUNT_INR * 100;
 
     // Hardcoded brief receipt format to guarantee length remains well below 40 characters
