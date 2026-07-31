@@ -22,7 +22,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ user
     // 2. Fetch Membership details and User's full name
     const { data: membership, error: membershipError } = await supabase
       .from('MembershipDetails')
-      .select('id, status, createdAt, User(fullName)')
+      .select('id, status, createdAt, User(fullName),registrationNum')
       .eq('userId', userId)
       .single();
 
@@ -70,7 +70,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ user
     const userFullName = Array.isArray(membership.User)
       ? (membership.User[0] as any).fullName
       : (membership.User as any).fullName;
-
+    
     const renderData = template.placeholders.map((p: any) => {
       let text = p.key;
 
@@ -78,6 +78,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ user
       if (p.key === '{{date}}') text = new Date(membership.createdAt).toLocaleDateString();
       if (['{{event}}', '{{eventName}}', '{{type}}'].includes(p.key)) text = 'Lifetime Membership';
       if (p.key === '{{membershipId}}') text = `MEM-${membership.id.split('-')[0].toUpperCase()}`; 
+      if (p.key === '{{registrationNum}}') text = `${membership.registrationNum}`; 
 
       // QR Code for verifying the specific membership
       if (p.type === 'qr' || p.key === '{{id}}' || p.key === '{{verify_url}}') {

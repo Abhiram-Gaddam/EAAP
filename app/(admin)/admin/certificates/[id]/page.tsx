@@ -30,6 +30,7 @@ type Placeholder = {
 const PREVIEW_DATA: Record<string, string> = {
   '{{name}}': 'Dr. Sarah Venkata Reddy',
   '{{date}}': 'August 15, 2026',
+  '{{registrationNum}}' : 'EAAP/LTM/2026/0001',
   '{{eventName}}': 'Annual Clinical Embryology Symposium',
   '{{id}}': 'CERT-123456789',
   '{{photo}}': 'https://i.pravatar.cc/300'
