@@ -112,7 +112,7 @@ export default function ApplicationDetail({ params }: { params: Promise<{ id: st
           </div>
           <p className="text-sm text-slate-500 font-medium mt-1.5 flex items-center gap-2">
             <span className="bg-slate-100 px-2 py-0.5 rounded text-xs">ID: {application.id}</span>
-            Submitted on {formatDate(application.created_at)}
+            Submitted on {formatDate(application.createdAt)}
           </p>
         </div>
         

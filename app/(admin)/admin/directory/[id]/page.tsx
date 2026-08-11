@@ -301,11 +301,11 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
                   <h1 className="text-2xl font-semibold text-[#1a365d] tracking-tight">{member.fullName}</h1>
                   <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1 border ${isActive ? 'bg-gradient-to-r from-emerald-50 to-emerald-100/60 text-emerald-700 border-emerald-200' : 'bg-slate-50 text-slate-500 border-slate-200'}`}>
                     {isActive && <CheckCircle2 className="w-3 h-3 stroke-[2.5]" />}
-                    {details.status || 'Pending'}
+                    {member.MembershipDetails.status || 'Pending'}
                   </span>
                 </div>
                 <p className="text-sm font-normal text-slate-500 mt-1">
-                  {details.currentDesignation || 'Registered Member'} &nbsp;&middot;&nbsp; {member.role.replace('_', ' ')}
+                  {member.MembershipDetails.currentDesignation || 'Registered Member'} &nbsp;&middot;&nbsp; {member.role.replace('_', ' ')}
                 </p>
               </div>
             </div>
@@ -340,7 +340,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
                     <Phone className="w-3.5 h-3.5 text-[#0096a4] stroke-[1.5]" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-slate-800 truncate">{details.phone || 'Not provided'}</p>
+                    <p className="text-sm font-medium text-slate-800 truncate">{member.MembershipDetails.phone || 'Not provided'}</p>
                     <p className="text-[11px] text-slate-400">Phone</p>
                   </div>
                 </div>
@@ -349,7 +349,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
                     <MapPin className="w-3.5 h-3.5 text-[#0096a4] stroke-[1.5]" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-slate-800 truncate">{details.cityDistrict || 'Not provided'}</p>
+                    <p className="text-sm font-medium text-slate-800 truncate">{member.MembershipDetails.cityDistrict || 'Not provided'}</p>
                     <p className="text-[11px] text-slate-400">Location</p>
                   </div>
                 </div>
@@ -360,14 +360,14 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-slate-200/70 p-4 shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
                 <Clock className="w-4 h-4 text-[#0096a4] stroke-[1.5] mb-2" />
                 <p className="text-lg font-semibold bg-gradient-to-br from-[#1a365d] to-[#0096a4] bg-clip-text text-transparent leading-tight">
-                  {details.clinicalEmbryologyExpYrs ? `${details.clinicalEmbryologyExpYrs}y` : '0y'}
+                  {member.MembershipDetails.clinicalEmbryologyExpYrs ? `${member.MembershipDetails.clinicalEmbryologyExpYrs}y` : '0y'}
                 </p>
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Experience</p>
               </div>
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-slate-200/70 p-4 shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
                 <Award className="w-4 h-4 text-[#1a365d] stroke-[1.5] mb-2" />
                 <p className="text-sm font-semibold text-[#1a365d] leading-tight">
-                  {formatDate(details.created_at)}
+                  {formatDate(member.MembershipDetails.createdAt)}
                 </p>
                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Member since</p>
               </div>
@@ -388,17 +388,17 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
               <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
                 <div>
                   <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1.5">Current workplace</p>
-                  <p className="text-sm font-medium text-slate-800">{details.currentHospital || 'Not specified'}</p>
+                  <p className="text-sm font-medium text-slate-800">{member.MembershipDetails.currentHospital || 'Not specified'}</p>
                 </div>
                 <div>
                   <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-1.5">Current designation</p>
-                  <p className="text-sm font-medium text-slate-800">{details.currentDesignation || 'Not specified'}</p>
+                  <p className="text-sm font-medium text-slate-800">{member.MembershipDetails.currentDesignation || 'Not specified'}</p>
                 </div>
                 <div className="sm:col-span-2">
                   <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mb-2">Highest academic qualification</p>
                   <div className="flex items-center gap-3 p-3.5 rounded-xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                     <GraduationCap className="w-4 h-4 text-[#0096a4] stroke-[1.5] shrink-0" />
-                    <p className="text-sm font-medium text-slate-800">{details.highestQualification || 'Not specified'}</p>
+                    <p className="text-sm font-medium text-slate-800">{member.MembershipDetails.highestQualification || 'Not specified'}</p>
                   </div>
                 </div>
               </div>

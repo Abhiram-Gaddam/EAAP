@@ -292,28 +292,22 @@ export default function RegisterPage() {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
                   <form className="space-y-4" onSubmit={handleNextStep2}>
-                    <div className="space-y-1.5 group">
-                      <label htmlFor="qualification" className="text-xs font-semibold text-slate-500 uppercase tracking-widest group-focus-within:text-[#0096a4] transition-colors">Highest Qualification</label>
-                      <div className="relative">
-                        <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-[#0096a4] transition-colors" />
-                        <select 
-                          id="qualification" 
-                          name="qualification"
-                          value={formData.qualification}
-                          onChange={handleInputChange}
-                          required 
-                          className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 text-slate-800 rounded-xl pl-12 pr-4 py-3.5 focus:outline-none focus:border-[#0096a4] focus:ring-4 focus:ring-[#0096a4]/10 transition-all font-light appearance-none"
-                        >
-                          <option value="">Select Qualification</option>
-                          <option value="bsc">B.Sc Clinical Embryology</option>
-                          <option value="msc">M.Sc Clinical Embryology</option>
-                          <option value="phd">Ph.D in Reproductive Medicine</option>
-                          <option value="md">MD / MS (OBG)</option>
-                          <option value="mbbs">MBBS</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                    </div>
+                  <div className="space-y-1.5 group">
+                  <label htmlFor="qualification" className="text-xs font-semibold text-slate-500 uppercase tracking-widest group-focus-within:text-[#0096a4] transition-colors">Highest Qualification</label>
+                  <div className="relative">
+                    <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-[#0096a4] transition-colors" />
+                    <input 
+                      type="text"
+                      id="qualification" 
+                      name="qualification"
+                      value={formData.qualification}
+                      onChange={handleInputChange}
+                      required 
+                      placeholder="e.g., M.Sc Clinical Embryology"
+                      className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 text-slate-800 rounded-xl pl-12 pr-4 py-3.5 focus:outline-none focus:border-[#0096a4] focus:ring-4 focus:ring-[#0096a4]/10 transition-all font-light"
+                    />
+                  </div>
+                </div> 
 
                     <AnimatePresence>
                       {formData.qualification === 'other' && (
