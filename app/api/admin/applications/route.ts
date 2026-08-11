@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 
 export async function GET() {
-  // const admin = true;
+  
   const admin = await verifyAdmin();
   if (!admin) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
